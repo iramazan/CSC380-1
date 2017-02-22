@@ -16,18 +16,6 @@ public class Order {
         id = -1;
     }
 
-    public void setName(String name){
-        this.name = name;
-    }
-
-    public void setStatus(String status){
-        this.status = status;
-    }
-
-    public void setPrice(double price){
-        this.price = price;
-    }
-
     public String getName(){
         return name;
     }
@@ -42,6 +30,18 @@ public class Order {
 
     public int getID(){
         return id;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setStatus(String status){
+        this.status = status;
+    }
+
+    public void setPrice(double price){
+        this.price = price;
     }
 
     public void setID(){
