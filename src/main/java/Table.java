@@ -64,7 +64,7 @@ public class Table {
     public void seatTable(int seatedCustomers) {
         this.tableStatus = TableStatus.OCCUPIED;
 
-        if(this.seatingCapacity < seatedCustomers)
+        if(this.seatingCapacity <= seatedCustomers)
             this.seatedCustomers = seatedCustomers;
         else
             throw new IllegalArgumentException("Number of seated customers must be less than the tables seating capacity");
