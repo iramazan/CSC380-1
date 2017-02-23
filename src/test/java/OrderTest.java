@@ -1,5 +1,7 @@
 
 import static org.junit.Assert.*;
+
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -8,7 +10,12 @@ import org.junit.Test;
  * import static org.junit.Assert.*;
  */
 public class OrderTest {
-    Order testOrder = new Order();
+    Order testOrder;
+
+    @Before
+    public void setup(){
+        testOrder = new Order();
+    }
 
     @Test
     public void testGetName(){
@@ -20,33 +27,39 @@ public class OrderTest {
     public void testNameSet(){
         testOrder.setName("Lobster");
         String orderName = testOrder.getName();
-        assertEquals("Lobster", orderName);
+        assertEquals("Lobster", testOrder.getName());
     }
 
     @Test
     public void testGetStatus(){
-        String status = "";
-        assertEquals(status, testOrder.getStatus());
+        assertEquals(Order.OrderStatus.STOPPED, testOrder.getStatus());
     }
 
+    /*
     @Test
     public void testSetStatus(){
-        testOrder.setStatus("In Progress");
-        String status = testOrder.getStatus();
-        assertEquals("In Progress", status);
+        testOrder.setStatus(Order.OrderStatus.STARTED);
+        //OrderStatus status = (OrderTest)testOrder.getStatus();
+        assertEquals(Order.OrderStatus.STARTED, testOrder.getStatus());
     }
+    */
 
     @Test
     public void testGetPrice(){
         double price = 0;
-        assertEquals(price, testOrder.getPrice());
+        assertEquals(price, testOrder.getPrice(), 0);
     }
 
     @Test
     public void testPriceSet(){
         testOrder.setPrice(20.35);
         double price = testOrder.getPrice();
-        assertEquals(20.35, price);
+        assertEquals(20.35, price, 0);
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void testPriceSetException(){
+        testOrder.setPrice(-15.99);
     }
 
     @Test
@@ -61,7 +74,4 @@ public class OrderTest {
         int id = testOrder.getID();
         assertEquals(1, id);
     }
-
-
-
 }
