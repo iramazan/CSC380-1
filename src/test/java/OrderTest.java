@@ -66,14 +66,16 @@ public class OrderTest {
 
     @Test
     public void testGetID(){
-        int id = -1;
+        int id = testOrder.getID()+1;
+        Order testOrder = new Order();
         assertEquals(id, testOrder.getID());
     }
 
     @Test
     public void testSetID(){
+        int expectedID = testOrder.getID() + 1;
         testOrder.setID();
         int id = testOrder.getID();
-        assertEquals(1, id);
+        assertEquals(expectedID, id);
     }
 }

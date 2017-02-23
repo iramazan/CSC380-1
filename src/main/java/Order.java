@@ -29,6 +29,14 @@ public class Order {
         id = -1;
         setID();
     }
+
+    public Order(String name, double price) {
+        this.name = name;
+        this.orderStatus = orderStatus.STOPPED;
+        this.price = price;
+        id = -1;
+        setID();
+    }
     //Return the name of the order
     public String getName(){
         return name;
