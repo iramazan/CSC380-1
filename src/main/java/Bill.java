@@ -26,10 +26,8 @@ public class Bill {
         return amount;
     }
 
-    public double splitBill(int num){
+    public double splitBillByNumber(int num){
         double cost = amount/num;
-        DecimalFormat df = new DecimalFormat("###.##");
-        cost = Double.parseDouble(df.format(cost));
         return cost;
     }
 
