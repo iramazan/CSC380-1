@@ -6,7 +6,7 @@ public class Table {
     private int id;
 
     // Enumerated type indicating if the table is available for seating
-    private enum TableStatus {FREE, OCCUPIED, DIRTY}
+    protected enum TableStatus {FREE, OCCUPIED, DIRTY}
 
     // Status of the table
     private TableStatus tableStatus;
@@ -62,14 +62,13 @@ public class Table {
 
     // Seat a group of customers at this table
     public void seatTable(int seatedCustomers) {
-        this.tableStatus = TableStatus.OCCUPIED;
-
-        if(this.seatingCapacity <= seatedCustomers)
+        if(this.seatingCapacity >= seatedCustomers) {
             this.seatedCustomers = seatedCustomers;
+            this.tableStatus = TableStatus.OCCUPIED;
+            this.orders = new ArrayList<Order>();
+        }
         else
             throw new IllegalArgumentException("Number of seated customers must be less than the tables seating capacity");
-
-        this.orders = new ArrayList<Order>();
     }
 
     // Free the table
