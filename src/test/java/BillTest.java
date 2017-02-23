@@ -30,7 +30,14 @@ public class BillTest {
     @Test
     public void testSplitBill(){
         testBill.setAmount(20);
-        assertEquals(5, testBill.splitBill(4), 0);
+        assertEquals(5, testBill.splitBillByNumber(4), 0);
     }
+
+    //Should fail with exception IllegalArgumentException
+    @Test (expected = IllegalArgumentException.class)
+    public void testSetAmountException(){
+        testBill.setAmount(-15.99);
+    }
+
 
 }
