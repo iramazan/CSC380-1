@@ -7,6 +7,8 @@ import java.util.ArrayList;
 public class Bill {
     private double amount;
 
+    //please let me commit
+
     public Bill(){
         amount = 0;
     }

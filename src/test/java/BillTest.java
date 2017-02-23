@@ -6,6 +6,8 @@ import static org.junit.Assert.*;
 /**
  * Created by James on 2/23/2017.
  */
+
+//Still want to commit
 public class BillTest {
     Bill testBill;
 
