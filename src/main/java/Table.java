@@ -71,11 +71,45 @@ public class Table {
             throw new IllegalArgumentException("Number of seated customers must be less than the tables seating capacity");
     }
 
+    // Place an order for a dish
+    public void placeOrder(String name, double price) {
+        if(this.getTableStatus() == TableStatus.OCCUPIED)
+            orders.add(new Order(name, price));
+        else
+            throw new IllegalStateException("Orders cannot be placed for an unoccupied table");
+    }
+
     // Free the table
     public void freeTable() {
         this.orders = null;
         this.seatedCustomers = 0;
         this.tableStatus = TableStatus.DIRTY;
+    }
+
+    // Generate a single Bill
+    public Bill generateBill() {
+        Bill bill = new Bill();
+        double prices = 0;
+        for(Order o : orders)
+            prices += o.getPrice();
+        bill.setAmount(prices);
+        return bill;
+    }
+
+    public ArrayList<Bill> generateBillEvenSplit(int n) {
+        double totalPrice = 0;
+        ArrayList<Bill> bills = new ArrayList<Bill>();
+
+        for(Order o : orders)
+            totalPrice += o.getPrice();
+        double individualPrices = totalPrice / n;
+
+        for(int i = 0; i < n; i++) {
+            Bill bill = new Bill();
+            bill.setAmount(individualPrices);
+            bills.add(bill);
+        }
+        return bills;
     }
 
 }
