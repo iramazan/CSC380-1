@@ -37,14 +37,23 @@ public class OrderTest {
         assertEquals(Order.OrderStatus.STOPPED, testOrder.getStatus());
     }
 
-    /*
     @Test
-    public void testSetStatus(){
-        testOrder.setStatus(Order.OrderStatus.STARTED);
-        //OrderStatus status = (OrderTest)testOrder.getStatus();
+    public void testStart(){
+        testOrder.startOrder();
         assertEquals(Order.OrderStatus.STARTED, testOrder.getStatus());
     }
-    */
+
+    @Test
+    public void testStop(){
+        testOrder.stopOrder();
+        assertEquals(Order.OrderStatus.STOPPED, testOrder.getStatus());
+    }
+
+    @Test
+    public void testFinished(){
+        testOrder.finishOrder();
+        assertEquals(Order.OrderStatus.FINISHED, testOrder.getStatus());
+    }
 
     @Test
     public void testGetPrice(){
