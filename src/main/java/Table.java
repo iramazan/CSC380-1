@@ -72,9 +72,9 @@ public class Table {
     }
 
     // Place an order for a dish
-    public void placeOrder(String name, double price) {
+    public void placeOrder(String name, String type, double price) {
         if(this.getTableStatus() == TableStatus.OCCUPIED)
-            orders.add(new Order(name, price));
+            orders.add(new Order(name, type, price));
         else
             throw new IllegalStateException("Orders cannot be placed for an unoccupied table");
     }

@@ -47,8 +47,8 @@ public class TableTest {
     @Test
     public void testGenerateBill() throws Exception {
         testTable.seatTable(3);
-        testTable.placeOrder("Sandwich", 5.20);
-        testTable.placeOrder("Soup", 2.70);
+        testTable.placeOrder("Sandwich", "Entree", 5.20);
+        testTable.placeOrder("Soup", "Appetizer", 2.70);
         Bill bill = testTable.generateBill();
         assertEquals(7.90, bill.getAmount(), 0.01);
     }
@@ -57,9 +57,9 @@ public class TableTest {
     @Test
     public void testGenerateBillEvenSplit() throws Exception {
         testTable.seatTable(3);
-        testTable.placeOrder("Sandwich", 5.20);
-        testTable.placeOrder("Soup", 2.70);
-        testTable.placeOrder("Baked Potato", 3.40);
+        testTable.placeOrder("Sandwich", "Entree", 5.20);
+        testTable.placeOrder("Soup", "Appetizer", 2.70);
+        testTable.placeOrder("Baked Potato", "Appetizer", 3.40);
         ArrayList<Bill> bills = testTable.generateBillEvenSplit(2);
         double splitPrice = 11.30 / 2;
         for(Bill b : bills)

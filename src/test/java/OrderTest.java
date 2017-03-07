@@ -33,6 +33,12 @@ public class OrderTest {
     }
 
     @Test
+    public void testGetType(){
+        testOrder.setType("Entree");
+        assertEquals("Entree", testOrder.getType());
+    }
+
+    @Test
     public void testGetStatus(){
         assertEquals(Order.OrderStatus.STOPPED, testOrder.getStatus());
     }

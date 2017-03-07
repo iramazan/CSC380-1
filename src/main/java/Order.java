@@ -8,6 +8,9 @@ public class Order {
     //Name of the order
     private String name;
 
+    //Type of order
+    private String type;
+
     //Enum identifier for the state of the order
     protected enum OrderStatus {STOPPED, STARTED, FINISHED};
     private OrderStatus orderStatus;
@@ -30,8 +33,9 @@ public class Order {
         setID();
     }
 
-    public Order(String name, double price) {
+    public Order(String name, String type, double price) {
         this.name = name;
+        this.type = type;
         this.orderStatus = orderStatus.STOPPED;
         this.price = price;
         id = -1;
@@ -40,6 +44,11 @@ public class Order {
     //Return the name of the order
     public String getName(){
         return name;
+    }
+
+    //Return the type of the order
+    public String getType(){
+        return type;
     }
 
     //Return the status of the order
@@ -62,11 +71,10 @@ public class Order {
         this.name = name;
     }
 
-    /*Set the orderStatus of the order
-    public void setStatus(OrderStatus orderStatus){
-        this.orderStatus = orderStatus;
+    //Set the type of the order
+    public void setType(String type){
+        this.type = type;
     }
-    */
 
     //Stop order
     public void stopOrder(){
