@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 /**
- * Created by James on 3/7/2017.
+ * Created by James on 3/7/2017
  * Menu class
  */
 public class Menu {

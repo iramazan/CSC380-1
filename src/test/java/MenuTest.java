@@ -4,6 +4,7 @@ import org.junit.Test;
 
 /**
  * Created by James on 3/7/2017.
+ * MenuTest class
  */
 public class MenuTest {
     Menu testMenu;
