@@ -13,6 +13,7 @@ public class ServerTest {
 
     @Before
     public void setUp() throws Exception {
+        Order.idGlobal = 0;
         testServer = new Server("Doe", "John", 10.00f);
         table0 = new Table(0, 5);
         table1 = new Table(1, 4);
@@ -48,13 +49,24 @@ public class ServerTest {
     public void getTableDataTest() throws Exception {
         testServer.addTable(table0);
         table0.seatTable(3);
+        table0.placeOrder("Baked Potato", "Appetizer", 4.50f);
+        table0.placeOrder("Steak", "Entree", 9.00f);
+        table0.placeOrder("Iced Tea", "Drink", 2.00f);
+        assertEquals("Table ID = 0\n# of Seated Customers = 3" +
+                        "\nOrder 0: Baked Potato; Appetizer; STOPPED" +
+                        "\nOrder 1: Steak; Entree; STOPPED" +
+                        "\nOrder 2: Iced Tea; Drink; STOPPED",
+                testServer.getTableData(0));
+    }
+
+    // Test viewing data on a table the server is not responsible for
+    @Test(expected=UnsupportedOperationException.class)
+    public void getTableDataExceptionTest() throws Exception {
+        testServer.addTable(table0);
+        table0.seatTable(3);
         table0.placeOrder("Baked Potato", "food", 4.50f);
         table0.placeOrder("Steak", "food", 9.00f);
         table0.placeOrder("Iced Tea", "Drink", 2.00f);
-        assertEquals("Table ID = 0\n# of Seated Customers = 3" +
-                        "\nOrder 0: Baked Potato; STOPPED" +
-                        "\nOrder 1: Steak; STOPPED" +
-                        "\nOrder 2: Iced Tea; STOPPED",
-                testServer.getTableData(0));
+        testServer.getTableData(1);
     }
 }

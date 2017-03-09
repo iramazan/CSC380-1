@@ -59,7 +59,8 @@ public class Server extends Employee {
         returnString += "Table ID = " + table.getId();
         returnString += "\n# of Seated Customers = " + table.getSeatedCustomers();
         for(Order o : table.getOrders()) {
-            returnString += "\nOrder " + o.getID() + ": " + o.getName() + "; " + o.getStatus();
+            returnString += "\nOrder " + o.getID() + ": " + o.getName() +
+                    "; " + o.getType() + "; " + o.getStatus();
         }
         return returnString;
     }

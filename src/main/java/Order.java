@@ -19,7 +19,7 @@ public class Order {
     private double price;
 
     //global variable used to set the id of all orders
-    private static int idGlobal = 0;
+    protected static int idGlobal = 0;
 
     //id of the order
     private int id;
