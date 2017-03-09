@@ -13,16 +13,9 @@ public class ServerTest {
 
     @Before
     public void setUp() throws Exception {
-        testServer = new Server("Doe", "John", 10.0f);
+        testServer = new Server("Doe", "John", 10.00f);
         table0 = new Table(0, 5);
         table1 = new Table(1, 4);
-    }
-
-    // Test Successfully adding new tables
-    @Test
-    public void addTableTest() throws Exception {
-        testServer.addTable(table0);
-        assertTrue(testServer.tables.contains(table0));
     }
 
     // Test successfully removing a table if it is the only table for that server
@@ -50,4 +43,18 @@ public class ServerTest {
         testServer.removeTable(1);
     }
 
+    // Test Viewing data on a table
+    @Test
+    public void getTableDataTest() throws Exception {
+        testServer.addTable(table0);
+        table0.seatTable(3);
+        table0.placeOrder("Baked Potato", "food", 4.50f);
+        table0.placeOrder("Steak", "food", 9.00f);
+        table0.placeOrder("Iced Tea", "Drink", 2.00f);
+        assertEquals("Table ID = 0\n# of Seated Customers = 3" +
+                        "\nOrder 0: Baked Potato; STOPPED" +
+                        "\nOrder 1: Steak; STOPPED" +
+                        "\nOrder 2: Iced Tea; STOPPED",
+                testServer.getTableData(0));
+    }
 }

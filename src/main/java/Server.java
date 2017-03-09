@@ -41,4 +41,26 @@ public class Server extends Employee {
     // TODO: How should paychecks be handled?
     public void printPaycheck() {
     }
+
+    public String getTableData(int id) {
+        Table table = null;
+        // Get the correct table
+        for(Table t : tables) {
+            if(t.getId() == id)
+                table = t;
+        }
+        // Throw exception if table is not found
+        if(table == null) {
+            throw new UnsupportedOperationException("Table with ID " + id + " is not allocated to this server.");
+        }
+
+        // Create data string
+        String returnString = "";
+        returnString += "Table ID = " + table.getId();
+        returnString += "\n# of Seated Customers = " + table.getSeatedCustomers();
+        for(Order o : table.getOrders()) {
+            returnString += "\nOrder " + o.getID() + ": " + o.getName() + "; " + o.getStatus();
+        }
+        return returnString;
+    }
 }

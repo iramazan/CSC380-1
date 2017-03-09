@@ -36,6 +36,8 @@ public class Table {
         return seatingCapacity;
     }
 
+    public ArrayList<Order> getOrders() { return new ArrayList<Order>(orders); }
+
     public void setId(int id) {
         this.id = id;
     }
