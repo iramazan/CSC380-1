@@ -27,4 +27,37 @@ public class Menu {
         return false;
     }
 
+
+    public ArrayList<Order> getAppetizers(){
+        ArrayList<Order> appetizers = new ArrayList<Order>();
+        for(int i = 0; i < dishes.size(); i++){
+            if(dishes.get(i).getType().equalsIgnoreCase("appetizer")){
+                appetizers.add(dishes.get(i));
+            }
+        }
+        return appetizers;
+    }
+
+
+    public ArrayList<Order> getEntrees(){
+        ArrayList<Order> entrees = new ArrayList<Order>();
+        for(int i = 0; i < dishes.size(); i++){
+            if(dishes.get(i).getType().equalsIgnoreCase("entree")){
+                entrees.add(dishes.get(i));
+            }
+        }
+        return entrees;
+    }
+
+
+    public ArrayList<Order> getDesserts(){
+        ArrayList<Order> desserts = new ArrayList<Order>();
+        for(int i = 0; i < dishes.size(); i++){
+            if(dishes.get(i).getType().equalsIgnoreCase("dessert")){
+                desserts.add(dishes.get(i));
+            }
+        }
+        return desserts;
+    }
+
 }
