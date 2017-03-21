@@ -14,7 +14,7 @@ public class ServerTest {
     @Before
     public void setUp() throws Exception {
         Order.idGlobal = 0;
-        testServer = new Server("Doe", "John", 10.00f);
+        testServer = new Server("Doe", "John", 10.00f, 4927);
         table0 = new Table(0, 5);
         table1 = new Table(1, 4);
     }
@@ -68,5 +68,11 @@ public class ServerTest {
         table0.placeOrder("Steak", "food", 9.00f);
         table0.placeOrder("Iced Tea", "Drink", 2.00f);
         testServer.getTableData(1);
+    }
+
+    // Test setting invalid pin
+    @Test(expected=IllegalArgumentException.class)
+    public void setPinTest() throws Exception {
+        testServer.setPin(122);
     }
 }

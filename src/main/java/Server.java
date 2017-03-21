@@ -5,8 +5,8 @@ public class Server extends Employee {
     protected ArrayList<Table> tables;
     protected float tips;
 
-    public Server(String lastName, String firstName, float salary) {
-        super(lastName, firstName, salary);
+    public Server(String lastName, String firstName, float salary, int pin) {
+        super(lastName, firstName, salary, pin);
         tables = new ArrayList<Table>();
         tips = 0;
     }
