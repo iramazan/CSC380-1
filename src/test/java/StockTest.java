@@ -1,6 +1,10 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Optional;
+
 import static org.junit.Assert.*;
 
 public class StockTest {
@@ -9,7 +13,7 @@ public class StockTest {
 
     @Before
     public void setUp() throws Exception {
-        stock = new Stock();
+        stock = new Stock(5);
         stock.addIngredient("Lettuce", 12);
         stock.addIngredient("Tomato", 9);
         stock.addIngredient("Steak", 22);
@@ -56,5 +60,18 @@ public class StockTest {
     public void removeIngredientFailureTest() throws Exception {
         boolean returnValue = stock.removeIngredient("Lemon", 23);
         assertFalse(returnValue);
+    }
+
+    @Test
+    public void warnRunningLowYesTest() throws Exception {
+        stock.addIngredient("Pickle", 3);
+        stock.modifyIngredients("Tomato", -4);
+        ArrayList<String> expected = new ArrayList<>(Arrays.asList("Pickle", "Tomato"));
+        assertEquals(expected, stock.warnRunningLow().get());
+    }
+
+    @Test
+    public void warnRunningLowNoTest() throws Exception {
+        assertFalse(stock.warnRunningLow().isPresent());
     }
 }
