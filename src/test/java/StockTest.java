@@ -1,23 +1,29 @@
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Optional;
 
 import static org.junit.Assert.*;
 
 public class StockTest {
 
-    Stock stock;
+    Stock stock = Stock.getInstance();
 
     @Before
     public void setUp() throws Exception {
-        stock = new Stock(5);
-        stock.addIngredient("Lettuce", 12);
-        stock.addIngredient("Tomato", 9);
-        stock.addIngredient("Steak", 22);
-        stock.addIngredient("Potato", 17);
+        Stock.getInstance().addIngredient("Lettuce", 12);
+        Stock.getInstance().addIngredient("Tomato", 9);
+        Stock.getInstance().addIngredient("Steak", 22);
+        Stock.getInstance().addIngredient("Potato", 17);
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        stock.ingredients = new HashMap<String, Integer>();
     }
 
     @Test

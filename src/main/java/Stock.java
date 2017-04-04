@@ -1,14 +1,12 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
-public class Stock {
+public class Stock extends Observable {
 
-    private HashMap<String, Integer> ingredients; // Stock of ingredients in the restaurant
+    protected HashMap<String, Integer> ingredients; // Stock of ingredients in the restaurant
     private final String serFile; // Where is the serialized file located
     private int runningLow;
+    private static Stock instance;
 
     // Helper function to modify ingredients hashmap.
     // Return false if doesn't contain ingredient.
@@ -20,9 +18,33 @@ public class Stock {
         return true;
     }
 
-    public Stock(int runningLow) {
+    private Stock() {
         ingredients = new HashMap<String, Integer>();
         serFile = "../../../stock.ser"; // Put in top level directory of project
+    }
+
+    public static synchronized Stock getInstance() {
+        if(instance == null) {
+            instance = new Stock();
+            File configFile = new File("../../../config");
+            int configRunningLow;
+            try {
+                Scanner sc = new Scanner(configFile);
+                configRunningLow = sc.nextInt();
+            } catch (FileNotFoundException e) {
+                System.out.println("Configuration file for Stock not found. Using default value of 5.");
+                configRunningLow = 5;
+            }
+            instance.setRunningLow(configRunningLow);
+        }
+        return instance;
+    }
+
+    public int getRunningLow() {
+        return runningLow;
+    }
+
+    public void setRunningLow(int runningLow) {
         this.runningLow = runningLow;
     }
 
@@ -49,12 +71,12 @@ public class Stock {
     }
 
     public String toString() {
-        String returnString = "";
+        StringBuilder returnString = new StringBuilder();
         Set<String> keySet = ingredients.keySet();
         for(String key : keySet) {
-            returnString += key + " : " + ingredients.get(key) + "\n";
+            returnString.append(key + " : " + ingredients.get(key) + "\n");
         }
-        return returnString;
+        return returnString.toString();
     }
 
     // Return any ingredients that are running low
