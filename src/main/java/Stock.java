@@ -20,13 +20,13 @@ public class Stock extends Observable {
 
     private Stock() {
         ingredients = new HashMap<String, Integer>();
-        serFile = "../../../stock.ser"; // Put in top level directory of project
+        serFile = "src/main/resources/stock.ser"; // Put in resources directory of project
     }
 
     public static synchronized Stock getInstance() {
         if(instance == null) {
             instance = new Stock();
-            File configFile = new File("../../../config");
+            File configFile = new File("src/main/resources/stock_config");
             int configRunningLow;
             try {
                 Scanner sc = new Scanner(configFile);
@@ -53,6 +53,8 @@ public class Stock extends Observable {
         if(ingredients.containsKey(ingredient))
             modifyIngredients(ingredient, amount);
         else ingredients.put(ingredient, amount);
+        setChanged();
+        notifyObservers();
     }
 
     // Remove a specified number of an ingredient.
@@ -60,6 +62,8 @@ public class Stock extends Observable {
     public boolean removeIngredient(String ingredient, int amount) {
         if (ingredients.containsKey(ingredient)) {
             modifyIngredients(ingredient, amount * -1);
+            setChanged();
+            notifyObservers();
             return true;
         } else return false;
     }

@@ -4,10 +4,10 @@ import java.util.ArrayList;
  * Created by James on 3/21/2017.
  */
 public class Restaurant {
-    ArrayList<Server> servers;
-    Menu menu;
-    ArrayList<Table> tables;
-    String name, address;
+    private ArrayList<Server> servers;
+    private Menu menu;
+    private ArrayList<Table> tables;
+    private String name, address;
 
     public Restaurant(String name, String address){
         this.name = name;
