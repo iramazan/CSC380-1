@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+    tools:context="edu.oswego.csc380_2.MenuActivity">
+
+    <Button
+        android:id="@+id/appetizers"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:text="Appetizers"
+        tools:layout_editor_absoluteY="35dp"
+        tools:layout_editor_absoluteX="80dp"
+        android:layout_above="@+id/entrees"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="61dp" />
+    <Button
+        android:id="@+id/entrees"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:text="Entrees"
+        tools:layout_editor_absoluteX="80dp"
+        tools:layout_editor_absoluteY="175dp"
+        android:layout_marginBottom="56dp"
+        android:layout_above="@+id/desserts"
+        android:layout_alignRight="@+id/desserts"
+        android:layout_alignEnd="@+id/desserts" />
+    <Button
+        android:id="@+id/desserts"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:text="Desserts"
+        tools:layout_editor_absoluteY="461dp"
+        tools:layout_editor_absoluteX="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="88dp" />
+
+
+
+
+
+</RelativeLayout>

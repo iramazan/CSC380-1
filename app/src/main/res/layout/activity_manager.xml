@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.oswego.csc380_2.ManagerActivity">
+
+    <Button
+        android:id="@+id/stock"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:text="Stock"
+        tools:layout_editor_absoluteY="35dp"
+        tools:layout_editor_absoluteX="80dp"
+        android:layout_above="@+id/employeeSchedule"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="61dp" />
+    <Button
+        android:id="@+id/employeeSchedule"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:text="Employee Schedule"
+        tools:layout_editor_absoluteX="80dp"
+        tools:layout_editor_absoluteY="175dp"
+        android:layout_marginBottom="56dp"
+        android:layout_above="@+id/menuEdit"
+        android:layout_alignRight="@+id/menuEdit"
+        android:layout_alignEnd="@+id/menuEdit" />
+    <Button
+        android:id="@+id/menuEdit"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:text="Menu Edit"
+        tools:layout_editor_absoluteY="461dp"
+        tools:layout_editor_absoluteX="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="88dp" />
+</RelativeLayout>

@@ -1,0 +1,9 @@
+waiter1
+123456
+waiter
+manager1
+1234
+manager
+chef1
+654321
+chef
