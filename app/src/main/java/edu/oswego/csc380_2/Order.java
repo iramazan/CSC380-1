@@ -105,4 +105,8 @@ public class Order {
         id = idGlobal;
         idGlobal++;
     }
+
+    public String toString(){
+        return this.name + "\n" + "$" + this.price;
+    }
 }
