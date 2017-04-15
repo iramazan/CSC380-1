@@ -27,7 +27,8 @@
         <activity android:name=".MenuActivity" />
         <activity android:name=".EmployeeActivity" />
         <activity android:name=".ManagerActivity" />
-        <activity android:name=".OrderInfoActivity"></activity>
+        <activity android:name=".OrderInfoActivity" />
+        <activity android:name=".PlaceOrderActivity"></activity>
     </application>
 
 </manifest>

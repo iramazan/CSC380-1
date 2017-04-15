@@ -13,6 +13,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 public class OrderInfoActivity extends ListActivity {
     ArrayList<Order> appetizersMenu = new ArrayList<>();
     ArrayList<Order> entreesMenu = new ArrayList<>();
@@ -65,5 +67,18 @@ public class OrderInfoActivity extends ListActivity {
             Order des = new Order(oName, "dessert", price);
             dessertsMenu.add(des);
         }
+    }
+
+    public void onListItemClick(ListView l, View v, int position, long id){
+        Intent intent = new Intent(this, PlaceOrderActivity.class);
+        ListView lv = (ListView) findViewById(android.R.id.list);
+        ListAdapter la = lv.getAdapter();
+        if(la != null){
+            //String name = la.getItem(position).name;
+            String price = la.getItem(position).toString();
+            intent.putExtra("dish", price);
+
+        }
+        startActivity(intent);
     }
 }
