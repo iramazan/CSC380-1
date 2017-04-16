@@ -24,7 +24,7 @@
         android:layout_above="@+id/button"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="91dp"
-        android:textAlign="center"
+        android:textAlignment="center"
         android:text="" />
 
     <TextView
