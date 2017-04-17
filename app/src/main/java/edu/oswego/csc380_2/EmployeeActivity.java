@@ -16,6 +16,7 @@ public class EmployeeActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v){
         Intent intent;
+        //retrieve the etrax from previous activity in order to match schedule and tables to current employee
         String id = getIntent().getStringExtra("id");
         switch(v.getId()){
             case R.id.viewOrders:

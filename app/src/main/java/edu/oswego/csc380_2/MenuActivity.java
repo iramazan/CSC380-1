@@ -31,19 +31,19 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        ListView listView = null;
-        ArrayAdapter<Order> adapter = null;
         Intent intent;
         switch(v.getId()){
-
+            //if appetizers button pressed, start order info activity for appetizers
             case R.id.appetizers:
                 intent = new Intent(this, OrderInfoActivity.class).putExtra("type", "appetizers");
                 startActivity(intent);
                 break;
+            //if appetizers button pressed, start order info activity for entrees
             case R.id.entrees:
                 intent = new Intent(this, OrderInfoActivity.class).putExtra("type", "entrees");
                 startActivity(intent);
                 break;
+            //if appetizers button pressed, start order info activity for desserts
             case R.id.desserts:
                 intent = new Intent(this, OrderInfoActivity.class).putExtra("type", "desserts");
                 startActivity(intent);

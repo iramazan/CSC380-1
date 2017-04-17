@@ -34,18 +34,25 @@ public class LoginActivity extends Activity implements OnClickListener {
 
     @Override
     public void onClick(View v) {
+        //create text views corresponding to android ids
         TextView loginStatus = (TextView) findViewById(R.id.loginStatus);
         TextView user = (TextView) findViewById(R.id.username);
         TextView pass = (TextView) findViewById(R.id.password);
+        //retrieve the user inputted data from the textfields
         String username = user.getText().toString();
         String password = pass.getText().toString();
+        //variable to keep track of login status
         boolean login = false;
         boolean validUser = false;
         String access = "";
+        //for each loop to iterate through the users array
         for(User u:users){
+            //check if username is valid
             if(u.getName().equals(username)){
                 validUser = true;
+                //check if the valid user's password is correct
                 if(u.getPassword().equals(password)){
+                    //login is successful
                     login = true;
                     access = u.getAccess();
                 }
@@ -54,15 +61,19 @@ public class LoginActivity extends Activity implements OnClickListener {
                 }
             }
         }
+        //output for invalid user
         if(!validUser){
             loginStatus.setText("Invalid user");
         }
         if(login){
+            //if the user access is waiter/chef starts corresponding activity
             if(access.equals("waiter")||access.equals("chef")){
                 Intent employeeLogin = new Intent(this, EmployeeActivity.class);
+                //pass the username into the new activity
                 employeeLogin.putExtra("id", username);
                 startActivity(employeeLogin);
             }
+            //start activity for manager
             else{
                 Intent managerLogin = new Intent(this, ManagerActivity.class);
                 startActivity(managerLogin);
@@ -70,6 +81,7 @@ public class LoginActivity extends Activity implements OnClickListener {
         }
     }
 
+    //read through users.txt raw file to create user objects
     public void createUsers() {
         Scanner scan = new Scanner(getResources().openRawResource(R.raw.users));
         while(scan.hasNextLine()){

@@ -11,6 +11,7 @@ public class PlaceOrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_order);
         TextView orderInfo = (TextView) findViewById(R.id.orderInfo);
+        //sets textfield to the name and price of the clicked dish
         orderInfo.setText(getIntent().getStringExtra("dish"));
     }
 }

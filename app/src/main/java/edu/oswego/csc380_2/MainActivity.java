@@ -21,20 +21,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //create new buttons
         Button login = (Button) findViewById(R.id.login);
         Button customer = (Button) findViewById(R.id.customer);
-
+        //set onClickListeners
         login.setOnClickListener(this);
         customer.setOnClickListener(this);
     }
 
+
     @Override
     public void onClick(View v){
+        //switch case to check which button is selected
         switch(v.getId()){
+            //if login button, begin login activity
             case R.id.login:
                 Intent login = new Intent(this, LoginActivity.class);
                 startActivity(login);
                 break;
+            //if customer button, begin menu activity
             case R.id.customer:
                 Intent menu = new Intent(this, MenuActivity.class);
                 startActivity(menu);
