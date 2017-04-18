@@ -1,5 +1,3 @@
-package edu.oswego.csc380_2;
-
 import java.util.ArrayList;
 
 /**
@@ -7,15 +5,18 @@ import java.util.ArrayList;
  */
 public class Restaurant {
     private ArrayList<Server> servers;
+    private Owner owner;
     private Menu menu;
     private ArrayList<Table> tables;
     private String name, address;
 
-    public Restaurant(String name, String address){
+    public Restaurant(String name, String address, String ownerLastName,String ownerFirstName,
+                      float ownerSalary, int ownerPin) {
         this.name = name;
         this.address = address;
 
         servers = new ArrayList<Server>();
+        owner = new Owner(ownerLastName, ownerFirstName, ownerSalary, ownerPin);
         menu = new Menu();
         tables = new ArrayList<Table>();
     }
@@ -38,5 +39,19 @@ public class Restaurant {
 
     public ArrayList<Table> getTables(){
         return tables;
+    }
+
+    // Serialize components. Return true if successful.
+    public boolean serialize() {
+        boolean stockSuccess = Stock.getInstance().serialize();
+        boolean financeSuccess = owner.serializeFinance();
+        return stockSuccess && financeSuccess;
+    }
+
+    // Deserialize components. Return true if successful.
+    public boolean deserialize() {
+        boolean stockSuccess = Stock.getInstance().deserialize();
+        boolean financeSuccess = owner.deserializeFinance();
+        return stockSuccess && financeSuccess;
     }
 }

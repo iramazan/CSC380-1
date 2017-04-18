@@ -1,23 +1,10 @@
-package edu.oswego.csc380_2;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Observable;
-import java.util.Optional;
-import java.util.Scanner;
-import java.util.Set;
+import java.io.*;
+import java.util.*;
 
 public class Stock extends Observable {
 
     protected HashMap<String, Integer> ingredients; // Stock of ingredients in the restaurant
-    private final String serFile; // Where is the serialized file located
+    protected final String serFile; // Where is the serialized file located
     private int runningLow;
     private static Stock instance;
 
@@ -33,13 +20,13 @@ public class Stock extends Observable {
 
     private Stock() {
         ingredients = new HashMap<String, Integer>();
-        serFile = "../../../stock.ser"; // Put in top level directory of project
+        serFile = "src/main/resources/stock.ser"; // Put in resources directory of project
     }
 
     public static synchronized Stock getInstance() {
         if(instance == null) {
             instance = new Stock();
-            File configFile = new File("../../../config");
+            File configFile = new File("src/main/resources/stock_config");
             int configRunningLow;
             try {
                 Scanner sc = new Scanner(configFile);
@@ -66,6 +53,8 @@ public class Stock extends Observable {
         if(ingredients.containsKey(ingredient))
             modifyIngredients(ingredient, amount);
         else ingredients.put(ingredient, amount);
+        setChanged();
+        notifyObservers();
     }
 
     // Remove a specified number of an ingredient.
@@ -73,6 +62,8 @@ public class Stock extends Observable {
     public boolean removeIngredient(String ingredient, int amount) {
         if (ingredients.containsKey(ingredient)) {
             modifyIngredients(ingredient, amount * -1);
+            setChanged();
+            notifyObservers();
             return true;
         } else return false;
     }
