@@ -1,15 +1,11 @@
-package edu.oswego.csc380_2;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.io.File;
+import java.util.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 public class StockTest {
 
@@ -81,5 +77,24 @@ public class StockTest {
     @Test
     public void warnRunningLowNoTest() throws Exception {
         assertFalse(stock.warnRunningLow().isPresent());
+    }
+
+    @Test
+    public void serializeTest() throws Exception {
+        stock.addIngredient("Pork", 34);
+        stock.serialize();
+        File serFile = new File(stock.serFile);
+        assertTrue(serFile.exists());
+        serFile.delete();
+    }
+
+    @Test
+    public void deserializeTest() throws Exception {
+        stock.serialize();
+        stock.ingredients = new HashMap<>();
+        stock.deserialize();
+        new File(stock.serFile).delete();
+        String[] expected = {"Potato", "Lettuce", "Steak", "Tomato"};
+        assertArrayEquals(expected, stock.ingredients.keySet().toArray());
     }
 }

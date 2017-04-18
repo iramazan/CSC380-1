@@ -1,11 +1,9 @@
-package edu.oswego.csc380_2;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 /**
  * Created by James on 3/21/2017.
@@ -16,7 +14,8 @@ public class RestaurantTest {
 
     @Before
     public void setup(){
-        testRestaurant = new Restaurant("Name", "Address");
+        testRestaurant = new Restaurant("Name", "Address", "Doe",
+                "John", 20.00f, 1234);
         testOrder = new Order("Name", "entree", 20.99);
     }
 
