@@ -1,3 +1,5 @@
+package edu.oswego.csc380_2;
+
 import java.io.*;
 import java.util.*;
 
@@ -14,15 +16,15 @@ public class Owner extends Employee implements Observer {
     public Owner(String lastName, String firstName, float salary, int pin) {
         super(lastName, firstName, salary, pin);
         finance = new HashMap<>();
-        serFile = "src/main/resources/finance.ser";
+        serFile = "resources/finance.ser";
     }
 
     @Override
     public void update(Observable observable, Object o) {
         Stock stockUpdate = (Stock) observable;
-        Optional<ArrayList<String>> runningLow = stockUpdate.warnRunningLow();
-        if(runningLow.isPresent()) {
-            System.out.println(runningLow.get().toString());
+        ArrayList<String> runningLow = stockUpdate.warnRunningLow();
+        if(runningLow != null) {
+            System.out.println(runningLow.toString());
         }
     }
 
@@ -47,8 +49,8 @@ public class Owner extends Employee implements Observer {
     }
 
     // Return finance database specified by name
-    public Optional<Finance> getFinance(String name) {
-        return Optional.ofNullable(finance.get(name));
+    public Finance getFinance(String name) {
+        return finance.get(name);
     }
 
     // list finance databases available

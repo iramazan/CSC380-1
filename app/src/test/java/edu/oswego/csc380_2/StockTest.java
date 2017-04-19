@@ -1,3 +1,5 @@
+package edu.oswego.csc380_2;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -70,13 +72,13 @@ public class StockTest {
     public void warnRunningLowYesTest() throws Exception {
         stock.addIngredient("Pickle", 3);
         stock.modifyIngredients("Tomato", -4);
-        ArrayList<String> expected = new ArrayList<>(Arrays.asList("Pickle", "Tomato"));
-        assertEquals(expected, stock.warnRunningLow().get());
+        String[] expected = { "Pickle", "Tomato" };
+        assertArrayEquals(expected, stock.warnRunningLow().toArray());
     }
 
     @Test
     public void warnRunningLowNoTest() throws Exception {
-        assertFalse(stock.warnRunningLow().isPresent());
+        assertTrue(stock.warnRunningLow() == null);
     }
 
     @Test

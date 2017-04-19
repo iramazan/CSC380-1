@@ -1,7 +1,8 @@
+package edu.oswego.csc380_2;
+
 import java.io.*;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.Optional;
 import java.util.Set;
 
 public class Finance implements Serializable {
@@ -179,12 +180,9 @@ public class Finance implements Serializable {
     }
 
     // Get history by ID
-    public Optional<String> getHistory(String historyID) {
+    public String getHistory(String historyID) {
         Tuple tuple = history.get(historyID);
-        if(tuple != null)
-            return Optional.of(tuple.toString());
-        else
-            return Optional.empty();
+        return tuple != null ? tuple.toString() : null;
     }
 
     public String listHistory() {
