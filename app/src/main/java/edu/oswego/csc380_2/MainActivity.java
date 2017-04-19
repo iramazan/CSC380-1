@@ -9,11 +9,11 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
 
     @Override
@@ -21,6 +21,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        RestaurantData.Instance().createUsers(getResources().openRawResource(R.raw.users));
+        InputStream a = getResources().openRawResource(R.raw.appetizers);
+        InputStream e = getResources().openRawResource(R.raw.entrees);
+        InputStream d = getResources().openRawResource(R.raw.desserts);
+        RestaurantData.Instance().createMenu(a, e, d);
         //create new buttons
         Button login = (Button) findViewById(R.id.login);
         Button customer = (Button) findViewById(R.id.customer);

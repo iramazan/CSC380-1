@@ -16,20 +16,21 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 /**
  * A login screen that offers login via username/password
  */
 public class LoginActivity extends Activity implements OnClickListener {
-    ArrayList<User> users = new ArrayList<>();
-
+//    ArrayList<User> users = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        createUsers();
+        //createUsers();
         Button enter = (Button) findViewById(R.id.bE);
         enter.setOnClickListener(this);
+        //RestaurantData.Instance().createUsers(getResources().openRawResource(R.raw.users));
     }
 
     @Override
@@ -46,7 +47,7 @@ public class LoginActivity extends Activity implements OnClickListener {
         boolean validUser = false;
         String access = "";
         //for each loop to iterate through the users array
-        for(User u:users){
+        for(User u:RestaurantData.Instance().users){
             //check if username is valid
             if(u.getName().equals(username)){
                 validUser = true;
@@ -80,17 +81,16 @@ public class LoginActivity extends Activity implements OnClickListener {
             }
         }
     }
-
     //read through users.txt raw file to create user objects
-    public void createUsers() {
-        Scanner scan = new Scanner(getResources().openRawResource(R.raw.users));
-        while(scan.hasNextLine()){
-            String username = scan.nextLine();
-            String password = scan.nextLine();
-            String access = scan.nextLine();
-            User user = new User(username, password, access);
-            users.add(user);
-        }
-    }
+//    public void createUsers() {
+//        Scanner scan = new Scanner(getResources().openRawResource(R.raw.users));
+//        while(scan.hasNextLine()){
+//            String username = scan.nextLine();
+//            String password = scan.nextLine();
+//            String access = scan.nextLine();
+//            User user = new User(username, password, access);
+//            users.add(user);
+//        }
+//    }
 }
 
