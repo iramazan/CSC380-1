@@ -1,9 +1,9 @@
 package edu.oswego.csc380_2;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.GregorianCalendar;
-import java.util.Optional;
 
 import static org.junit.Assert.*;
 
@@ -70,7 +70,7 @@ public class FinanceTest {
         finance.moveToHistory();
         String expected = "Profit: 1200.0, Employee Data: 400.0, " +
                 "Ingredients: 200.0, Property: 500.0, Misc: 50.0";
-        assertEquals(expected, finance.getHistory(historyID).get());
+        assertEquals(expected, finance.getHistory(historyID));
     }
 
     @Test
@@ -81,8 +81,8 @@ public class FinanceTest {
         finance.setProperty(500d);
         finance.setMisc(50d);
         finance.moveToHistory();
-        Optional<String> returnStuff = finance.getHistory("jan2015");
-        assertFalse(returnStuff.isPresent());
+        String returnStuff = finance.getHistory("jan2015");
+        assertTrue(returnStuff == null);
     }
 
     @Test

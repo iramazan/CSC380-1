@@ -1,4 +1,5 @@
 package edu.oswego.csc380_2;
+
 import org.junit.Before;
 import org.junit.Test;
 

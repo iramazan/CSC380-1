@@ -1,4 +1,5 @@
 package edu.oswego.csc380_2;
+
 import java.io.*;
 import java.util.*;
 
@@ -21,13 +22,13 @@ public class Stock extends Observable {
 
     private Stock() {
         ingredients = new HashMap<String, Integer>();
-        serFile = "src/main/resources/stock.ser"; // Put in resources directory of project
+        serFile = "resources/stock.ser"; // Put in resources directory of project
     }
 
     public static synchronized Stock getInstance() {
         if(instance == null) {
             instance = new Stock();
-            File configFile = new File("src/main/resources/stock_config");
+            File configFile = new File("resources/stock_config");
             int configRunningLow;
             try {
                 Scanner sc = new Scanner(configFile);
@@ -85,7 +86,7 @@ public class Stock extends Observable {
     }
 
     // Return any ingredients that are running low
-    public Optional<ArrayList<String>> warnRunningLow() {
+    public ArrayList<String> warnRunningLow() {
         Set<String> keySet = ingredients.keySet(); // Keys in the hashmap
         ArrayList<String> returnArray = new ArrayList<>();
         for (String key : keySet) {
@@ -93,9 +94,7 @@ public class Stock extends Observable {
                 returnArray.add(key);
         }
 
-        if(returnArray.isEmpty())
-            return Optional.empty();
-        else return Optional.of(returnArray);
+        return !returnArray.isEmpty() ? returnArray : null;
     }
 
     // Serialize the hash table. Return true if successful.
