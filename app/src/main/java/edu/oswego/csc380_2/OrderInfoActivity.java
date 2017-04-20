@@ -16,9 +16,10 @@ import java.util.Scanner;
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class OrderInfoActivity extends ListActivity {
-    ArrayList<Order> appetizersMenu = new ArrayList<>();
-    ArrayList<Order> entreesMenu = new ArrayList<>();
-    ArrayList<Order> dessertsMenu = new ArrayList<>();
+    ArrayList<Order> appetizersMenu = RestaurantData.Instance().appetizersMenu;
+    ArrayList<Order> entreesMenu = RestaurantData.Instance().entreesMenu;
+    ArrayList<Order> dessertsMenu = RestaurantData.Instance().dessertsMenu;
+    String type = "-1";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //create listview to display items
@@ -26,7 +27,6 @@ public class OrderInfoActivity extends ListActivity {
         //create adapter to load the listview
         ArrayAdapter<Order> adapter;
         //call create menu method
-        createMenu();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orderinfo);
         //conditionals to check which list of items to display
@@ -36,43 +36,19 @@ public class OrderInfoActivity extends ListActivity {
             //initialize arrayadpater with the appropriate arraylist
             adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, appetizersMenu);
             listView.setAdapter(adapter);
+            type = "0";
         }
         else if(getIntent().getStringExtra("type").equals("entrees")){
             listView = (ListView) findViewById(android.R.id.list);
             adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, entreesMenu);
             listView.setAdapter(adapter);
+            type = "1";
         }
         else{
             listView = (ListView) findViewById(android.R.id.list);
             adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, dessertsMenu);
             listView.setAdapter(adapter);
-        }
-    }
-
-    //method to read through appetizers.txt, entrees.txt, and desserts.txt raw files to create arraylists for the menus
-    public void createMenu(){
-        Scanner scan = new Scanner(getResources().openRawResource(R.raw.appetizers));
-        while(scan.hasNextLine()){
-            String oName = scan.nextLine();
-            double price = Double.parseDouble(scan.nextLine());
-            Order app = new Order(oName, "appetizer", price);
-            appetizersMenu.add(app);
-        }
-        scan.close();
-        scan = new Scanner(getResources().openRawResource(R.raw.entrees));
-        while(scan.hasNextLine()){
-            String oName = scan.nextLine();
-            double price = Double.parseDouble(scan.nextLine());
-            Order ent = new Order(oName, "entree", price);
-            entreesMenu.add(ent);
-        }
-        scan.close();
-        scan = new Scanner(getResources().openRawResource(R.raw.desserts));
-        while(scan.hasNextLine()){
-            String oName = scan.nextLine();
-            double price = Double.parseDouble(scan.nextLine());
-            Order des = new Order(oName, "dessert", price);
-            dessertsMenu.add(des);
+            type = "2";
         }
     }
 
@@ -88,6 +64,7 @@ public class OrderInfoActivity extends ListActivity {
             String info = la.getItem(position).toString();
             //pass it into the new activity
             intent.putExtra("dish", info);
+            intent.putExtra("type", type);
 
         }
         startActivity(intent);

@@ -38,7 +38,7 @@ public class Table {
         return seatingCapacity;
     }
 
-    public ArrayList<Order> getOrders() { return new ArrayList<Order>(orders); }
+    public ArrayList<Order> getOrders() { return orders; }
 
     public void setId(int id) {
         this.id = id;
@@ -90,6 +90,12 @@ public class Table {
         this.tableStatus = TableStatus.DIRTY;
     }
 
+    //Clean the table
+    public void cleanTable(){
+        freeTable();
+        this.tableStatus = TableStatus.FREE;
+    }
+
     // Generate a single Bill
     public Bill generateBill() {
         Bill bill = new Bill();
@@ -114,6 +120,19 @@ public class Table {
             bills.add(bill);
         }
         return bills;
+    }
+
+    public String toString() {
+        if (tableStatus == TableStatus.DIRTY){
+            return "ID:" + id + "\n" + "DIRTY";
+        }
+        else if(tableStatus == TableStatus.OCCUPIED){
+            return "ID:" + id + "\n" + "OCCUPIED";
+        }
+        else{
+            return "ID: " + id + " \n" + "FREE: " + seatingCapacity + " SEATS";
+        }
+
     }
 
 }

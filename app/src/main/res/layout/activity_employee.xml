@@ -13,9 +13,10 @@
         android:text="Orders"
         tools:layout_editor_absoluteY="35dp"
         tools:layout_editor_absoluteX="80dp"
-        android:layout_above="@+id/employeeSchedule"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="61dp" />
+        android:layout_marginTop="65dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/schedule"
+        android:layout_marginStart="6dp" />
     <Button
         android:id="@+id/schedule"
         android:layout_width="250dp"
@@ -23,10 +24,8 @@
         android:text="Schedule"
         tools:layout_editor_absoluteX="80dp"
         tools:layout_editor_absoluteY="175dp"
-        android:layout_marginBottom="56dp"
-        android:layout_above="@+id/menuEdit"
-        android:layout_alignRight="@+id/menuEdit"
-        android:layout_alignEnd="@+id/menuEdit" />
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/serverTables" />
     <Button
         android:id="@+id/serverTables"
         android:layout_width="250dp"

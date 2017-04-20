@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.oswego.csc380_2.ViewTableOptionsActivity">
+
+    <Button
+        android:id="@+id/seatTable"
+        android:layout_width="250dp"
+        android:layout_height="75dp"
+        android:text="Seat Table"
+        tools:layout_editor_absoluteY="35dp"
+        tools:layout_editor_absoluteX="80dp"
+        android:layout_marginTop="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:id="@+id/placeTableOrder"
+        android:layout_width="250dp"
+        android:layout_height="75dp"
+        android:text="Place Order"
+        tools:layout_editor_absoluteX="80dp"
+        tools:layout_editor_absoluteY="175dp"
+        android:layout_marginTop="23dp"
+        android:layout_below="@+id/seatTable"
+        android:layout_alignStart="@+id/seatTable" />
+    <Button
+        android:id="@+id/viewTableOrders"
+        android:layout_width="250dp"
+        android:layout_height="75dp"
+        android:text="View Orders"
+        tools:layout_editor_absoluteY="461dp"
+        tools:layout_editor_absoluteX="80dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:id="@+id/getCheck"
+        android:layout_width="250dp"
+        android:layout_height="75dp"
+        android:text="Get Check"
+        tools:layout_editor_absoluteY="461dp"
+        tools:layout_editor_absoluteX="80dp"
+        android:layout_marginTop="18dp"
+        android:layout_below="@+id/viewTableOrders"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/tableStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="" />
+
+    <Button
+        android:id="@+id/evict"
+        android:layout_width="250dp"
+        android:layout_height="75dp"
+        android:text="Evict Table"
+        android:layout_below="@+id/getCheck"
+        android:layout_marginTop="18dp"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

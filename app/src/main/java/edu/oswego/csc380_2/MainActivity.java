@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         InputStream e = getResources().openRawResource(R.raw.entrees);
         InputStream d = getResources().openRawResource(R.raw.desserts);
         RestaurantData.Instance().createMenu(a, e, d);
+        RestaurantData.Instance().createTables(getResources().openRawResource(R.raw.tables));
         //create new buttons
         Button login = (Button) findViewById(R.id.login);
         Button customer = (Button) findViewById(R.id.customer);

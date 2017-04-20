@@ -31,7 +31,10 @@
         <activity android:name=".PlaceOrderActivity" />
         <activity android:name=".FoodOrdersActivity" />
         <activity android:name=".ScheduleActivity" />
-        <activity android:name=".ViewTablesActivity"></activity>
+        <activity android:name=".ViewTablesActivity" />
+        <activity android:name=".ViewTableOrders" />
+        <activity android:name=".EmployeeOrderActivity" />
+        <activity android:name=".ViewTableOptionsActivity" />
     </application>
 
 </manifest>

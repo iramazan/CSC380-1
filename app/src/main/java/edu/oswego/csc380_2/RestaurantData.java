@@ -5,7 +5,6 @@ import android.widget.ArrayAdapter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.Enumeration;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -136,6 +135,16 @@ public class RestaurantData{
             double price = Double.parseDouble(scan.nextLine());
             Order des = new Order(oName, "dessert", price);
             dessertsMenu.add(des);
+        }
+    }
+
+    public void createTables(InputStream t){
+        Scanner scan = new Scanner(t);
+        while(scan.hasNextLine()){
+            int tableId = Integer.parseInt(scan.nextLine());
+            int tableCap = Integer.parseInt(scan.nextLine());
+            Table table = new Table(tableId, tableCap);
+            tables.add(table);
         }
     }
 }
