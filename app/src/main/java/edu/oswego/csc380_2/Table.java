@@ -124,13 +124,13 @@ public class Table {
 
     public String toString() {
         if (tableStatus == TableStatus.DIRTY){
-            return "ID:" + id + "\n" + "DIRTY";
+            return "ID:"+ " " + id + " \n" + "DIRTY";
         }
         else if(tableStatus == TableStatus.OCCUPIED){
-            return "ID:" + id + "\n" + "OCCUPIED";
+            return "ID:"+ " " + id + " \n" + "OCCUPIED";
         }
         else{
-            return "ID: " + id + " \n" + "FREE: " + seatingCapacity + " SEATS";
+            return "ID:"+ " " + id + " \n" + "FREE: " + seatingCapacity + " SEATS";
         }
 
     }
