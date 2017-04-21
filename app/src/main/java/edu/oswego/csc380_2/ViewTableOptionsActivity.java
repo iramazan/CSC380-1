@@ -16,8 +16,7 @@ public class ViewTableOptionsActivity extends AppCompatActivity implements View.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_table_options);
-        String temp[] = getIntent().getStringExtra("id").split(" ");
-        index = Integer.parseInt(temp[1]);
+        index = Integer.parseInt(getIntent().getStringExtra("table"));
 
         Button seatTable = (Button) findViewById(R.id.seatTable);
         Button placeTableOrder = (Button) findViewById(R.id.placeTableOrder);

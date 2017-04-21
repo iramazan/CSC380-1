@@ -12,8 +12,7 @@ public class ViewTableOrders extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_table_orders);
-        String temp[] = getIntent().getStringExtra("id").split(" ");
-        int index = Integer.parseInt(temp[1]);
+        int index = Integer.parseInt(getIntent().getStringExtra("table"));
         ListView listView = (ListView) findViewById(android.R.id.list);
         ArrayAdapter<Table> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, RestaurantData.Instance().tables.get(index).getOrders());
         if (!adapter.isEmpty()) {

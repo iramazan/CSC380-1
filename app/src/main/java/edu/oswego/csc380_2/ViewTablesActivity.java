@@ -31,9 +31,14 @@ public class ViewTablesActivity extends ListActivity{
         ListAdapter la = lv.getAdapter();
         if(la != null){
             //create a string to store the info for that item
-            String info = la.getItem(position).toString();
+            String temp = la.getItem(position).toString();
+            System.out.println(temp);
+            String tempArray[] = temp.split(" ");
+
+
             //pass it into the new activity
-            intent.putExtra("id", info);
+
+            intent.putExtra("table", tempArray[1]);
 
         }
 
