@@ -4,37 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.oswego.csc380_2.ManagerActivity">
+    tools:context="edu.oswego.csc380_2.ManagerActivity"
+    android:theme="@android:style/Theme.Material.Light.DarkActionBar">
 
-    <Button
-        android:id="@+id/stock"
-        android:layout_width="250dp"
-        android:layout_height="100dp"
-        android:text="Stock"
-        tools:layout_editor_absoluteY="35dp"
-        tools:layout_editor_absoluteX="80dp"
-        android:layout_above="@+id/employeeSchedule"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="61dp" />
-    <Button
-        android:id="@+id/employeeSchedule"
-        android:layout_width="250dp"
-        android:layout_height="100dp"
-        android:text="Employee Schedule"
-        tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="175dp"
-        android:layout_marginBottom="56dp"
-        android:layout_above="@+id/menuEdit"
-        android:layout_alignRight="@+id/menuEdit"
-        android:layout_alignEnd="@+id/menuEdit" />
-    <Button
-        android:id="@+id/menuEdit"
-        android:layout_width="250dp"
-        android:layout_height="100dp"
-        android:text="Menu Edit"
-        tools:layout_editor_absoluteY="461dp"
-        tools:layout_editor_absoluteX="80dp"
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/managerBottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="88dp" />
+        app:menu="@menu/manager_navbar_layout" />
+
 </RelativeLayout>
