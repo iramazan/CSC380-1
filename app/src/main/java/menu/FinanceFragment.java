@@ -1,4 +1,4 @@
-package edu.oswego.csc380_2;
+package menu;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -6,21 +6,21 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import edu.oswego.csc380_2.R;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link StockFragment.OnFragmentInteractionListener} interface
+ * {@link FinanceFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link StockFragment#newInstance} factory method to
+ * Use the {@link FinanceFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class StockFragment extends Fragment {
+public class FinanceFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public StockFragment() {
+    public FinanceFragment() {
         // Required empty public constructor
     }
 
@@ -28,10 +28,11 @@ public class StockFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment StockFragment.
+     * @return A new instance of fragment FinanceFragment.
      */
-    public static StockFragment newInstance() {
-        StockFragment fragment = new StockFragment();
+    // TODO: Rename and change types and number of parameters
+    public static FinanceFragment newInstance() {
+        FinanceFragment fragment = new FinanceFragment();
         return fragment;
     }
 
@@ -44,7 +45,7 @@ public class StockFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_stock, container, false);
+        return inflater.inflate(R.layout.fragment_finance, container, false);
     }
 
     /**

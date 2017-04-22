@@ -5,6 +5,12 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
       <item
+              android:id="@+id/managerStock"
+              android:enabled="true"
+              android:icon="@drawable/ic_list_black_24dp"
+              android:title="@string/stock"
+              app:showAsAction="ifRoom" />
+      <item
               android:id="@+id/managerMenuEdit"
               android:enabled="true"
               android:icon="@drawable/ic_restaurant_menu_black_24dp"
@@ -21,11 +27,5 @@
               android:enabled="true"
               android:icon="@drawable/ic_account_balance_black_24dp"
               android:title="@string/finances"
-              app:showAsAction="ifRoom" />
-      <item
-              android:id="@+id/managerStock"
-              android:enabled="true"
-              android:icon="@drawable/ic_list_black_24dp"
-              android:title="@string/stock"
               app:showAsAction="ifRoom" />
 </menu>

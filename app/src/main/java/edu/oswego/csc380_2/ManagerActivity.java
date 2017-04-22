@@ -7,6 +7,10 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import menu.FinanceFragment;
+import menu.ManagerEmployeeScheduleFragment;
+import menu.ManagerMenuEditFragment;
+import menu.StockFragment;
 
 public class ManagerActivity extends AppCompatActivity {
 

@@ -5,12 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
 
 
 import java.io.InputStream;
-import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -25,6 +22,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         InputStream a = getResources().openRawResource(R.raw.appetizers);
         InputStream e = getResources().openRawResource(R.raw.entrees);
         InputStream d = getResources().openRawResource(R.raw.desserts);
+        InputStream s = getResources().openRawResource(R.raw.stock);
+        RestaurantData.Instance().createStock(s);
         RestaurantData.Instance().createMenu(a, e, d);
         RestaurantData.Instance().createTables(getResources().openRawResource(R.raw.tables));
         //create new buttons
