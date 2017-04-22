@@ -71,6 +71,7 @@ public class LoginActivity extends Activity implements OnClickListener {
             if(access.equals("waiter")||access.equals("chef")){
                 Intent employeeLogin = new Intent(this, EmployeeActivity.class);
                 //pass the username into the new activity
+                employeeLogin.putExtra("access","employee");
                 employeeLogin.putExtra("id", username);
                 startActivity(employeeLogin);
             }

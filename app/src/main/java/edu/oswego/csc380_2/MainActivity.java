@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //if customer button, begin menu activity
             case R.id.customer:
                 Intent menu = new Intent(this, MenuActivity.class);
+                menu.putExtra("access","customer");
                 startActivity(menu);
                 break;
         }

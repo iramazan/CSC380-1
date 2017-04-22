@@ -20,6 +20,8 @@ public class OrderInfoActivity extends ListActivity {
     ArrayList<Order> entreesMenu = RestaurantData.Instance().entreesMenu;
     ArrayList<Order> dessertsMenu = RestaurantData.Instance().dessertsMenu;
     String type = "-1";
+    String access;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //create listview to display items
@@ -50,6 +52,8 @@ public class OrderInfoActivity extends ListActivity {
             listView.setAdapter(adapter);
             type = "2";
         }
+
+        access = getIntent().getStringExtra("access");
     }
 
     //method for clicking on a list iem
@@ -65,6 +69,11 @@ public class OrderInfoActivity extends ListActivity {
             //pass it into the new activity
             intent.putExtra("dish", info);
             intent.putExtra("type", type);
+            intent.putExtra("access", access);
+            if(access.equals("employee")){
+                String index = getIntent().getStringExtra("index");
+                intent.putExtra("index", index);
+            }
 
         }
         startActivity(intent);

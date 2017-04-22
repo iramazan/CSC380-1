@@ -14,11 +14,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener{
-
+    String access;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        access = getIntent().getStringExtra("access");
+        System.out.println(access);
 
         Button appetizers = (Button) findViewById(R.id.appetizers);
         Button entrees = (Button) findViewById(R.id.entrees);
@@ -36,16 +38,32 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
             //if appetizers button pressed, start order info activity for appetizers
             case R.id.appetizers:
                 intent = new Intent(this, OrderInfoActivity.class).putExtra("type", "appetizers");
+                intent.putExtra("access",access);
+                if(access.equals("employee")){
+                    String index = getIntent().getStringExtra("index");
+                    System.out.println(index);
+                    intent.putExtra("index", index);
+                }
                 startActivity(intent);
                 break;
             //if appetizers button pressed, start order info activity for entrees
             case R.id.entrees:
                 intent = new Intent(this, OrderInfoActivity.class).putExtra("type", "entrees");
+                intent.putExtra("access",access);
+                if(access.equals("employee")){
+                    String index = getIntent().getStringExtra("index");
+                    intent.putExtra("index", index);
+                }
                 startActivity(intent);
                 break;
             //if appetizers button pressed, start order info activity for desserts
             case R.id.desserts:
                 intent = new Intent(this, OrderInfoActivity.class).putExtra("type", "desserts");
+                intent.putExtra("access",access);
+                if(access.equals("employee")){
+                    String index = getIntent().getStringExtra("index");
+                    intent.putExtra("index", index);
+                }
                 startActivity(intent);
                 break;
         }

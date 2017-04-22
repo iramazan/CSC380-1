@@ -55,18 +55,42 @@ public class ViewTableOptionsActivity extends AppCompatActivity implements View.
                 }
                 break;
             case R.id.placeTableOrder:
+                intent = new Intent(this, MenuActivity.class);
+                intent.putExtra("access","employee");
+                intent.putExtra("index",""+index);
+                System.out.println(index);
+                startActivity(intent);
                 break;
             case R.id.getCheck:
+                if(t != Table.TableStatus.OCCUPIED){
+                    tableStatus.setText("This table does not have a check");
+                }
+                else{
+
+                }
                 break;
-            case R.id.viewOrders:
-                if(RestaurantData.Instance().tables.get(index).getOrders()!=null){
+            case R.id.viewTableOrders:
+                if(!RestaurantData.Instance().tables.get(index).getOrders().isEmpty()){
                     intent = new Intent(this, ViewTableOrders.class);
+                    intent.putExtra("index", ""+index);
                     startActivity(intent);
+                }
+                else{
+                    tableStatus.setText("This table has no orders");
                 }
                 break;
             case R.id.evict:
                 if(t == Table.TableStatus.OCCUPIED){
                     tableStatus.setText("This table is now DIRTY");
+                    //for each order at this table
+                    for(Order o: RestaurantData.Instance().tables.get(index).getOrders()){
+                        //check against orders in the global orders arraylist
+                        for(Order oR: RestaurantData.Instance().orders){
+                            if(o.getID() == oR.getID()){
+                                RestaurantData.Instance().orders.remove(oR);
+                            }
+                        }
+                    }
                     RestaurantData.Instance().tables.get(index).freeTable();
                 }
                 else if(t == Table.TableStatus.DIRTY){

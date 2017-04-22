@@ -27,12 +27,18 @@ public class PlaceOrderActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View v){
         String info[] = getIntent().getStringExtra("dish").split("\n");
         int type = Integer.parseInt(getIntent().getStringExtra("type"));
+        String access = getIntent().getStringExtra("access");
         if(type == 0){
             ArrayList<Order> appetizersMenu = RestaurantData.Instance().appetizersMenu;
             for(int i = 0; i < appetizersMenu.size(); i++){
                 if(appetizersMenu.get(i).getName().equals(info[0])){
                     Order o = appetizersMenu.get(i);
                     RestaurantData.Instance().orders.add(o);
+                    if(access.equals("employee")){
+                        String tableNum = getIntent().getStringExtra("index");
+                        int index = Integer.parseInt(tableNum);
+                        RestaurantData.Instance().tables.get(index).placeOrder(o);
+                    }
                 }
             }
         }
@@ -42,6 +48,11 @@ public class PlaceOrderActivity extends AppCompatActivity implements View.OnClic
                 if(entreesMenu.get(i).getName().equals(info[0])){
                     Order o = entreesMenu.get(i);
                     RestaurantData.Instance().orders.add(o);
+                    if(access.equals("employee")){
+                        String tableNum = getIntent().getStringExtra("index");
+                        int index = Integer.parseInt(tableNum);
+                        RestaurantData.Instance().tables.get(index).placeOrder(o);
+                    }
                 }
             }
         }
@@ -51,8 +62,14 @@ public class PlaceOrderActivity extends AppCompatActivity implements View.OnClic
                 if(dessertsMenu.get(i).getName().equals(info[0])){
                     Order o = dessertsMenu.get(i);
                     RestaurantData.Instance().orders.add(o);
+                    if(access.equals("employee")){
+                        String tableNum = getIntent().getStringExtra("index");
+                        int index = Integer.parseInt(tableNum);
+                        RestaurantData.Instance().tables.get(index).placeOrder(o);
+                    }
                 }
             }
         }
+        onBackPressed();
     }
 }

@@ -83,6 +83,15 @@ public class Table {
             throw new IllegalStateException("Orders cannot be placed for an unoccupied table");
     }
 
+    public void placeOrder(Order o){
+        if(this.getTableStatus() == TableStatus.OCCUPIED){
+            orders.add(o);
+        }
+        else {
+            throw new IllegalStateException("Orders cannot be placed for an unoccupied table");
+        }
+    }
+
     // Free the table
     public void freeTable() {
         this.orders = null;
