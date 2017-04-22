@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="edu.oswego.csc380_2.ManagerActivity"
-    android:theme="@android:style/Theme.Material.Light.DarkActionBar">
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="edu.oswego.csc380_2.ManagerActivity" >
+
+    <FrameLayout
+        android:id="@+id/managerContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/managerBottomNav"
+        android:animateLayoutChanges="true" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/managerBottomNav"

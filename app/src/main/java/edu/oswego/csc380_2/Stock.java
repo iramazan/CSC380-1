@@ -85,6 +85,11 @@ public class Stock extends Observable {
         return returnString.toString();
     }
 
+    // Helper for StockAdapter
+    public Set<Map.Entry<String, Integer>> getIngredients() {
+        return ingredients.entrySet();
+    }
+
     // Return any ingredients that are running low
     public ArrayList<String> warnRunningLow() {
         Set<String> keySet = ingredients.keySet(); // Keys in the hashmap

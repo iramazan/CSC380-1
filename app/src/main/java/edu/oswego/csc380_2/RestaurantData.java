@@ -138,6 +138,14 @@ public class RestaurantData{
         }
     }
 
+    public void createStock(InputStream s) {
+        Scanner sc = new Scanner(s);
+        while(sc.hasNextLine()) {
+            String[] data = sc.nextLine().split(":");
+            Stock.getInstance().addIngredient(data[0], Integer.parseInt(data[1]));
+        }
+    }
+
     public void createTables(InputStream t){
         Scanner scan = new Scanner(t);
         while(scan.hasNextLine()){
