@@ -3,7 +3,6 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_gravity="center"
-             android:inputType="number"
              tools:context="edu.oswego.csc380_2.StockDialogFragment">
 
     <EditText
@@ -12,6 +11,7 @@
         android:lines="1"
         android:maxLength="15"
         android:inputType="number"
+        android:digits="0123456789"
         android:hint="@string/number"
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"

@@ -1,31 +1,31 @@
-package edu.oswego.csc380_2;
+package menu;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.support.v4.app.DialogFragment;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import menu.StockFragment;
 
+import android.widget.EditText;
+import edu.oswego.csc380_2.R;
+import edu.oswego.csc380_2.Stock;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple {@link DialogFragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link StockDialogFragment.OnFragmentInteractionListener} interface
+ * {@link AddStockDialogFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link StockDialogFragment#newInstance} factory method to
+ * Use the {@link AddStockDialogFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class StockDialogFragment extends DialogFragment {
+public class AddStockDialogFragment extends DialogFragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public StockDialogFragment() {
+    public AddStockDialogFragment() {
         // Required empty public constructor
     }
 
@@ -33,10 +33,11 @@ public class StockDialogFragment extends DialogFragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment StockDialogFragment.
+     * @return A new instance of fragment AddStockDialogFragment.
      */
-    public static StockDialogFragment newInstance() {
-        StockDialogFragment fragment = new StockDialogFragment();
+    // TODO: Rename and change types and number of parameters
+    public static AddStockDialogFragment newInstance() {
+        AddStockDialogFragment fragment = new AddStockDialogFragment();
         return fragment;
     }
 
@@ -50,57 +51,35 @@ public class StockDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_stock_dialog, container, false);
+        return inflater.inflate(R.layout.fragment_add_stock_dialog, container, false);
     }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        // Extract ingredient name from parent fragment
-        final String item = this.getTag();
-
-        // Setup EditText
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View layout = inflater.inflate(R.layout.fragment_stock_dialog, null);
+        View layout = inflater.inflate(R.layout.fragment_add_stock_dialog, null);
         builder.setView(layout);
-        final EditText input = (EditText) layout.findViewById(R.id.stockDialogEdit);
+        final EditText inputItem = (EditText) layout.findViewById(R.id.addStockItem);
+        final EditText inputAmount = (EditText) layout.findViewById(R.id.addStockAmount);
 
         // Perform application logic to add/remove ingredients
-        builder.setTitle("Edit " + item + " Stock")
-                .setPositiveButton("add", new DialogInterface.OnClickListener() {
+        builder.setTitle("Add an ingredient")
+                .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        // Add amount in EditText
                         Stock stock = Stock.getInstance();
-                        // Get amountString
-                        String amountString = String.valueOf(input.getText());
-                        int amount;
-                        if(!amountString.equals("")) {
-                            amount = Integer.parseInt(amountString);
-                            if (amount > 0) {
-                                stock.addIngredient(item, amount);
-                                // Update list
-                                StockFragment parent = (StockFragment) getParentFragment();
-                                parent.onStockDialogFragmentInteraction();
-                            }
-                        }
-                    }
-                })
-                .setNegativeButton("remove", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        // Remove amount in EditText
-                        Stock stock = Stock.getInstance();
-                        // Get amountString
-                        String amountString = String.valueOf(input.getText());
+                        // Extract item and amount
+                        final String item = String.valueOf(inputItem.getText());
+                        final String amountString = String.valueOf(inputAmount.getText());
                         int amount;
                         if(!amountString.equals("")) {
                             amount = Integer.parseInt(amountString);
                             if(amount > 0) {
-                                stock.removeIngredient(item, amount);
+                                stock.addIngredient(item, amount);
                                 // Update list
                                 StockFragment parent = (StockFragment) getParentFragment();
-                                parent.onStockDialogFragmentInteraction();
+                                parent.onAddStockFragmentInteraction();
                             }
                         }
                     }
@@ -119,6 +98,6 @@ public class StockDialogFragment extends DialogFragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        void onStockDialogFragmentInteraction();
+        void onAddStockFragmentInteraction();
     }
 }

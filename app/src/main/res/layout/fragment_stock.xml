@@ -1,9 +1,10 @@
-<LinearLayout
+<android.support.design.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context="menu.StockFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="menu.StockFragment"
         android:orientation="vertical">
 
     <ListView
@@ -12,15 +13,19 @@
         android:layout_height="wrap_content"/>
 
     <TextView
-        android:id="@+id/stockItem"
+        android:id="@android:id/empty"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"/>
+        android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/stockAmount"
-        android:layout_width="match_parent"
+    <android.support.design.widget.FloatingActionButton
+        app:fabSize="normal"
+        app:layout_anchorGravity="bottom|end"
+        app:layout_anchor="@android:id/list"
+        android:id="@+id/stockFab"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_plus_black_24dp"
         android:layout_height="wrap_content"
-        android:textSize="15sp"/>
+        android:layout_width="wrap_content"/>
 
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

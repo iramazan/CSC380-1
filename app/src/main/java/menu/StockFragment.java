@@ -1,7 +1,7 @@
 package menu;
 
-import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,13 +20,11 @@ import java.util.Set;
 
 /**
  * A simple {@link ListFragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link StockFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
  * Use the {@link StockFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class StockFragment extends ListFragment implements StockDialogFragment.OnFragmentInteractionListener {
+public class StockFragment extends ListFragment implements StockDialogFragment.OnFragmentInteractionListener,
+                                                           AddStockDialogFragment.OnFragmentInteractionListener {
 
     private StockAdapter adapter;
 
@@ -59,7 +57,7 @@ public class StockFragment extends ListFragment implements StockDialogFragment.O
             View returnView;
             if(view == null)
                 returnView = LayoutInflater.from(viewGroup.getContext()).inflate(
-                        R.layout.fragment_stock, viewGroup, false);
+                        R.layout.fragment_stock_layout, viewGroup, false);
             else
                 returnView = view;
             Map.Entry<String, Integer> entry = getItem(i);
@@ -95,6 +93,18 @@ public class StockFragment extends ListFragment implements StockDialogFragment.O
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_stock, container, false);
 
+        // Handle Floating Action Button click
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.stockFab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Add to the Stock
+                AddStockDialogFragment dialog = AddStockDialogFragment.newInstance();
+                dialog.show(getChildFragmentManager(), "addStockDialog");
+            }
+        });
+
+        // Populate list
         Stock stock = Stock.getInstance();
         adapter = new StockAdapter(stock.getIngredients());
         setListAdapter(adapter);
@@ -112,23 +122,15 @@ public class StockFragment extends ListFragment implements StockDialogFragment.O
     }
 
     @Override
-    public void onFragmentInteraction() {
+    public void onStockDialogFragmentInteraction() {
         // Refresh Stock Adapter after update
         adapter.notifyDataSetChanged();
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    @Override
+    public void onAddStockFragmentInteraction() {
+        // Refresh Stock adapter after update
+        adapter.notifyDataSetChanged();
     }
+
 }
