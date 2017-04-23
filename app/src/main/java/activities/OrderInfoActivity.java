@@ -1,19 +1,17 @@
-package edu.oswego.csc380_2;
+package activities;
 
 import android.app.ListActivity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
+import edu.oswego.csc380_2.Order;
+import edu.oswego.csc380_2.R;
 
 public class OrderInfoActivity extends ListActivity {
     ArrayList<Order> appetizersMenu = RestaurantData.Instance().appetizersMenu;

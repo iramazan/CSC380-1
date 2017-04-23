@@ -1,4 +1,4 @@
-package edu.oswego.csc380_2;
+package activities;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+
+import edu.oswego.csc380_2.R;
 import menu.FinanceFragment;
 import menu.ManagerEmployeeScheduleFragment;
 import menu.ManagerMenuEditFragment;

@@ -1,17 +1,12 @@
-package edu.oswego.csc380_2;
+package activities;
 
-import android.app.ListActivity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import edu.oswego.csc380_2.R;
 
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener{
     String access;

@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,19 +22,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name="activities.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".MenuActivity" />
-        <activity android:name=".EmployeeActivity" />
-        <activity android:name=".ManagerActivity" />
-        <activity android:name=".OrderInfoActivity" />
-        <activity android:name=".PlaceOrderActivity" />
-        <activity android:name=".FoodOrdersActivity" />
-        <activity android:name=".ScheduleActivity" />
-        <activity android:name=".ViewTablesActivity" />
-        <activity android:name=".ViewTableOrders" />
-        <activity android:name=".EmployeeOrderActivity" />
-        <activity android:name=".ViewTableOptionsActivity" />
+        <activity android:name="activities.MenuActivity" />
+        <activity android:name="activities.EmployeeActivity" />
+        <activity android:name="activities.ManagerActivity" />
+        <activity android:name="activities.OrderInfoActivity" />
+        <activity android:name="activities.PlaceOrderActivity" />
+        <activity android:name="activities.FoodOrdersActivity" />
+        <activity android:name="activities.ScheduleActivity" />
+        <activity android:name="activities.ViewTablesActivity" />
+        <activity android:name="activities.ViewTableOrders" />
+        <activity android:name="activities.EmployeeOrderActivity" />
+        <activity android:name="activities.ViewTableOptionsActivity" />
+        <activity android:name="activities.CheckActivity"></activity>
     </application>
 
 </manifest>

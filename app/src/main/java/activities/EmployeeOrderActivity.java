@@ -1,9 +1,11 @@
-package edu.oswego.csc380_2;
+package activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import edu.oswego.csc380_2.R;
 
 public class EmployeeOrderActivity extends AppCompatActivity implements View.OnClickListener{
     int index;

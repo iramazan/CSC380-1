@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/appetizers"
     android:orientation="vertical">
-    tools:context="edu.oswego.csc380_2.OrderInfoActivity">
+    tools:context="activities.OrderInfoActivity">
     <ListView
         android:id="@android:id/list"
         android:layout_width="match_parent"
