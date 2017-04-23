@@ -1,17 +1,17 @@
 package menu;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import edu.oswego.csc380_2.R;
 import edu.oswego.csc380_2.Stock;
+import edu.oswego.csc380_2.StockDialogFragment;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -26,7 +26,9 @@ import java.util.Set;
  * Use the {@link StockFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class StockFragment extends ListFragment {
+public class StockFragment extends ListFragment implements StockDialogFragment.OnFragmentInteractionListener {
+
+    private StockAdapter adapter;
 
     private class StockAdapter extends BaseAdapter {
 
@@ -43,7 +45,7 @@ public class StockFragment extends ListFragment {
 
         @Override
         public Map.Entry<String, Integer> getItem(int i) {
-            return (Map.Entry) data.get(i);
+            return (Map.Entry<String, Integer>) data.get(i);
         }
 
         @Override
@@ -94,10 +96,25 @@ public class StockFragment extends ListFragment {
         View view = inflater.inflate(R.layout.fragment_stock, container, false);
 
         Stock stock = Stock.getInstance();
-        StockAdapter adapter = new StockAdapter(stock.getIngredients());
+        adapter = new StockAdapter(stock.getIngredients());
         setListAdapter(adapter);
 
         return view;
+    }
+
+    @Override
+    public void onListItemClick(ListView lv, View view, int position, long id) {
+        super.onListItemClick(lv, view, position, id);
+        // Create Dialog box to add/remove ingredients
+        StockDialogFragment dialog = StockDialogFragment.newInstance();
+        String item = adapter.getItem(position).getKey();
+        dialog.show(getChildFragmentManager(), item);
+    }
+
+    @Override
+    public void onFragmentInteraction() {
+        // Refresh Stock Adapter after update
+        adapter.notifyDataSetChanged();
     }
 
     /**
