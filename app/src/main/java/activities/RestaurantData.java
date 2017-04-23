@@ -17,6 +17,7 @@ import edu.oswego.csc380_2.User;
  */
 
 public class RestaurantData{
+    //global arrays of stuff
     ArrayList<User> users;
     ArrayList<Table> tables;
     ArrayList<Order> orders;
@@ -26,6 +27,7 @@ public class RestaurantData{
 
     private static RestaurantData instance;
     private String username;
+
     //no outer class can initialize this class's object
     private RestaurantData() {
         users = new ArrayList<>();
@@ -35,7 +37,7 @@ public class RestaurantData{
         entreesMenu = new ArrayList<>();
         dessertsMenu = new ArrayList<>();
     }
-
+    //returns this class
     public static RestaurantData Instance()
     {
         //if no instance is initialized yet then create new instance
@@ -162,6 +164,7 @@ public class RestaurantData{
         }
     }
 
+    //creates menus based off of input streams
     public void createMenu(InputStream a, InputStream e, InputStream d){
         Scanner scan = new Scanner(a);
         while(scan.hasNextLine()){
@@ -187,7 +190,7 @@ public class RestaurantData{
             dessertsMenu.add(des);
         }
     }
-
+    //create stock based off of input stream
     public void createStock(InputStream s) {
         Scanner sc = new Scanner(s);
         while(sc.hasNextLine()) {
@@ -195,7 +198,7 @@ public class RestaurantData{
             Stock.getInstance().addIngredient(data[0], Integer.parseInt(data[1]));
         }
     }
-
+    //create tables based off of input stream
     public void createTables(InputStream t){
         Scanner scan = new Scanner(t);
         while(scan.hasNextLine()){
@@ -205,7 +208,7 @@ public class RestaurantData{
             tables.add(table);
         }
     }
-
+    //remove orders from the global array based on the arraylist of orders from a table
     public void removeTableOrders(ArrayList<Order> tableOrders){
         for(Order o: tableOrders){
             //check against orders in the global orders arraylist

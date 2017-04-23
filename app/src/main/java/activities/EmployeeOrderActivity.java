@@ -22,6 +22,7 @@ public class EmployeeOrderActivity extends AppCompatActivity implements View.OnC
         finish.setOnClickListener(this);
         stop.setOnClickListener(this);
 
+        //retrieve the index of the table, and the index of the order
         index = Integer.parseInt(getIntent().getStringExtra("index"));
         oIndex = Integer.parseInt(getIntent().getStringExtra("order"));
     }
@@ -29,6 +30,7 @@ public class EmployeeOrderActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View v){
         switch(v.getId()){
+            //start/finish/stop orders
             case R.id.start:
                 RestaurantData.Instance().tables.get(index).getOrders().get(oIndex).startOrder();
                 break;

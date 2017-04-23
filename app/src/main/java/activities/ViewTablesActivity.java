@@ -36,15 +36,9 @@ public class ViewTablesActivity extends ListActivity{
             String temp = la.getItem(position).toString();
             System.out.println(temp);
             String tempArray[] = temp.split(" ");
-
-
             //pass it into the new activity
-
             intent.putExtra("table", tempArray[1]);
-
         }
-
         startActivity(intent);
-
     }
 }

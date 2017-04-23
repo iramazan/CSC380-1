@@ -28,18 +28,25 @@ public class PlaceOrderActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View v){
+        //retrieve the dish info
         String info[] = getIntent().getStringExtra("dish").split("\n");
+        //retrieve type
         int type = Integer.parseInt(getIntent().getStringExtra("type"));
+        //retrieve access and index
         String access = getIntent().getStringExtra("access");
         String tableNum = getIntent().getStringExtra("index");
         int index = Integer.parseInt(tableNum);
+        //check if a table is seated
         if(RestaurantData.Instance().tables.get(index).getSeatedCustomers()!=0) {
+            //type determines the menu to choose from
             if (type == 0) {
                 ArrayList<Order> appetizersMenu = RestaurantData.Instance().appetizersMenu;
                 for (int i = 0; i < appetizersMenu.size(); i++) {
                     if (appetizersMenu.get(i).getName().equals(info[0])) {
+                        //retrieve the order from the appropriate menu, and place it in the global array
                         Order o = appetizersMenu.get(i);
                         RestaurantData.Instance().orders.add(o);
+                        //if the person doing this is an employee, then it adds to the specific tables order
                         if (access.equals("employee")) {
                             RestaurantData.Instance().tables.get(index).placeOrder(o);
                         }
@@ -71,6 +78,7 @@ public class PlaceOrderActivity extends AppCompatActivity implements View.OnClic
             onBackPressed();
         }
         else{
+            //if table isnt seated
             TextView orderConfirmation = (TextView) findViewById(R.id.confirmOrder);
             orderConfirmation.setText("This table is not seated.");
         }
