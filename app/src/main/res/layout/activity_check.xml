@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.oswego.csc380_2.activities.CheckActivity">
+
+    <Button
+        android:id="@+id/fullcheck"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:text="Full Check"
+        tools:layout_editor_absoluteX="92dp"
+        tools:layout_editor_absoluteY="69dp"
+        android:layout_marginBottom="73dp"
+        android:layout_above="@+id/splitcheck"
+        android:layout_alignStart="@+id/splitcheck" />
+
+    <Button
+        android:id="@+id/splitcheck"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:text="Split Check"
+        tools:layout_editor_absoluteX="147dp"
+        tools:layout_editor_absoluteY="271dp"
+        android:layout_marginBottom="132dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/checkStatus"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/fullcheck"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="31dp"
+        android:textAlignment="center"
+        android:text="" />
+
+</RelativeLayout>
