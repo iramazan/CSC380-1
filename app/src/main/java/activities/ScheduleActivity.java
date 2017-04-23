@@ -1,7 +1,9 @@
-package edu.oswego.csc380_2;
+package activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import edu.oswego.csc380_2.R;
 
 public class ScheduleActivity extends AppCompatActivity {
 

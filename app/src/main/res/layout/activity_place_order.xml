@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.oswego.csc380_2.PlaceOrderActivity">
+    tools:context="edu.oswego.csc380_2.activities.PlaceOrderActivity">
 
     <Button
         android:id="@+id/placeOrder"
@@ -28,7 +28,7 @@
         android:text="" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/confirmOrder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

@@ -1,10 +1,13 @@
 package edu.oswego.csc380_2;
 
+import java.text.DecimalFormat;
+
 /**
  * Created by James on 2/23/2017.
  */
 public class Bill {
     private double amount;
+    DecimalFormat df = new DecimalFormat("###,###,###.##");
 
     //please let me commit
 
@@ -22,12 +25,12 @@ public class Bill {
     }
 
     public double getAmount(){
-        return amount;
+        return Double.parseDouble(df.format(amount));
     }
 
     public double splitBillByNumber(int num){
         double cost = amount/num;
-        return cost;
+        return Double.parseDouble(df.format(cost));
     }
 
     /*ALLOW FOR CUSTOMER TO SPLIT BILL BASED ON ORDERS

@@ -1,13 +1,15 @@
-package edu.oswego.csc380_2;
+package activities;
 
 import android.app.ListActivity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import edu.oswego.csc380_2.R;
+import edu.oswego.csc380_2.Table;
 
 public class ViewTableOrders extends ListActivity {
     int index;

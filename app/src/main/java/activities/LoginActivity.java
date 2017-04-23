@@ -1,20 +1,18 @@
-package edu.oswego.csc380_2;
+package activities;
 
 
 import android.app.Activity;
 
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import edu.oswego.csc380_2.R;
+import edu.oswego.csc380_2.User;
 
 
 /**

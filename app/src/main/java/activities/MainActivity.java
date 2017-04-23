@@ -1,4 +1,4 @@
-package edu.oswego.csc380_2;
+package activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,8 @@ import android.widget.Button;
 
 
 import java.io.InputStream;
+
+import edu.oswego.csc380_2.R;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{

@@ -1,13 +1,14 @@
-package edu.oswego.csc380_2;
-import android.app.Application;
-import android.widget.ArrayAdapter;
+package activities;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import edu.oswego.csc380_2.Order;
+import edu.oswego.csc380_2.Stock;
+import edu.oswego.csc380_2.Table;
+import edu.oswego.csc380_2.User;
 
 /**
  * Created by James on 4/18/2017.
@@ -153,6 +154,15 @@ public class RestaurantData{
             int tableCap = Integer.parseInt(scan.nextLine());
             Table table = new Table(tableId, tableCap);
             tables.add(table);
+        }
+    }
+
+    public void removeTableOrders(ArrayList<Order> tableOrders){
+        for(Order o: tableOrders){
+            //check against orders in the global orders arraylist
+            if(orders.contains(o)){
+                orders.remove(o);
+            }
         }
     }
 }

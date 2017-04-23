@@ -8,10 +8,10 @@ public class Table {
     private int id;
 
     // Enumerated type indicating if the table is available for seating
-    protected enum TableStatus {FREE, OCCUPIED, DIRTY}
+    public enum TableStatus {FREE, OCCUPIED, DIRTY}
 
     // Status of the table
-    private TableStatus tableStatus;
+    public TableStatus tableStatus;
 
     // Number of people at the table. An empty table will have zero.
     private int seatedCustomers;

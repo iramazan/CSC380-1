@@ -1,6 +1,5 @@
-package edu.oswego.csc380_2;
+package activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,7 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import edu.oswego.csc380_2.Order;
+import edu.oswego.csc380_2.R;
+import edu.oswego.csc380_2.Table;
 
 public class ViewTableOptionsActivity extends AppCompatActivity implements View.OnClickListener{
     int index;
@@ -66,7 +67,9 @@ public class ViewTableOptionsActivity extends AppCompatActivity implements View.
                     tableStatus.setText("This table does not have a check");
                 }
                 else{
-
+                    intent = new Intent(this, CheckActivity.class);
+                    intent.putExtra("index",""+index);
+                    startActivity(intent);
                 }
                 break;
             case R.id.viewTableOrders:
@@ -83,14 +86,7 @@ public class ViewTableOptionsActivity extends AppCompatActivity implements View.
                 if(t == Table.TableStatus.OCCUPIED){
                     tableStatus.setText("This table is now DIRTY");
                     //for each order at this table
-                    for(Order o: RestaurantData.Instance().tables.get(index).getOrders()){
-                        //check against orders in the global orders arraylist
-                        for(Order oR: RestaurantData.Instance().orders){
-                            if(o.getID() == oR.getID()){
-                                RestaurantData.Instance().orders.remove(oR);
-                            }
-                        }
-                    }
+                    RestaurantData.Instance().removeTableOrders(RestaurantData.Instance().tables.get(index).getOrders());
                     RestaurantData.Instance().tables.get(index).freeTable();
                 }
                 else if(t == Table.TableStatus.DIRTY){
