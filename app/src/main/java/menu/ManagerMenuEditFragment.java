@@ -1,8 +1,10 @@
 package menu;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,15 +12,53 @@ import edu.oswego.csc380_2.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ManagerMenuEditFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
  * Use the {@link ManagerMenuEditFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class ManagerMenuEditFragment extends Fragment {
 
-    private OnFragmentInteractionListener mListener;
+    MenuEditPageAdapter pageAdapter;
+
+    private static class MenuEditPageAdapter extends FragmentPagerAdapter {
+
+        private static int ITEMS = 3;
+
+        public MenuEditPageAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            switch(position) {
+                case 0: // Appetizers
+                    return ManagerMenuFragment.newInstance(0);
+                case 1: // Entrees
+                    return ManagerMenuFragment.newInstance(1);
+                case 2: // Desserts
+                    return ManagerMenuFragment.newInstance(2);
+            }
+            return null; // Should not be reached
+        }
+
+        @Override
+        public int getCount() {
+            return ITEMS;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            // TODO
+            switch(position) {
+                case 0: // Appetizers
+                    return "Appetizers";
+                case 1: // Entrees
+                    return "Entrees";
+                case 2: // Desserts
+                    return "Desserts";
+            }
+            return "ERROR"; // Should not be reached
+        }
+    }
 
     public ManagerMenuEditFragment() {
         // Required empty public constructor
@@ -30,7 +70,6 @@ public class ManagerMenuEditFragment extends Fragment {
      *
      * @return A new instance of fragment ManagerMenuEditFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static Fragment newInstance() {
         ManagerMenuEditFragment fragment = new ManagerMenuEditFragment();
         return fragment;
@@ -45,21 +84,11 @@ public class ManagerMenuEditFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_manager_menu_edit, container, false);
+        View view = inflater.inflate(R.layout.fragment_manager_menu_edit, container, false);
+        ViewPager vpPager = (ViewPager) view.findViewById(R.id.managerEditMenuPager);
+        pageAdapter = new MenuEditPageAdapter(getActivity().getSupportFragmentManager());
+        vpPager.setAdapter(pageAdapter);
+        return view;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 }

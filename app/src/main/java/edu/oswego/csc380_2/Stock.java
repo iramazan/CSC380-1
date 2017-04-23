@@ -85,7 +85,7 @@ public class Stock extends Observable {
         return returnString.toString();
     }
 
-    // Helper for StockAdapter
+    // Helper for ListAdapter
     public Set<Map.Entry<String, Integer>> getIngredients() {
         return ingredients.entrySet();
     }

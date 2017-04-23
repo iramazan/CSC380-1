@@ -26,13 +26,13 @@ import java.util.Set;
 public class StockFragment extends ListFragment implements StockDialogFragment.OnFragmentInteractionListener,
                                                            AddStockDialogFragment.OnFragmentInteractionListener {
 
-    private StockAdapter adapter;
+    private ListAdapter adapter;
 
-    private class StockAdapter extends BaseAdapter {
+    private class ListAdapter extends BaseAdapter {
 
         private final ArrayList<Map.Entry<String, Integer>> data;
 
-        public StockAdapter(Set<Map.Entry<String, Integer>> data) {
+        public ListAdapter(Set<Map.Entry<String, Integer>> data) {
             this.data = new ArrayList<>(data);
         }
 
@@ -57,12 +57,12 @@ public class StockFragment extends ListFragment implements StockDialogFragment.O
             View returnView;
             if(view == null)
                 returnView = LayoutInflater.from(viewGroup.getContext()).inflate(
-                        R.layout.fragment_stock_layout, viewGroup, false);
+                        R.layout.fragment_list_layout, viewGroup, false);
             else
                 returnView = view;
             Map.Entry<String, Integer> entry = getItem(i);
-            ((TextView) returnView.findViewById(R.id.stockItem)).setText(entry.getKey());
-            ((TextView) returnView.findViewById(R.id.stockAmount)).setText(entry.getValue().toString());
+            ((TextView) returnView.findViewById(R.id.listMain)).setText(entry.getKey());
+            ((TextView) returnView.findViewById(R.id.listSub)).setText(entry.getValue().toString());
             return returnView;
         }
     }
@@ -106,7 +106,7 @@ public class StockFragment extends ListFragment implements StockDialogFragment.O
 
         // Populate list
         Stock stock = Stock.getInstance();
-        adapter = new StockAdapter(stock.getIngredients());
+        adapter = new ListAdapter(stock.getIngredients());
         setListAdapter(adapter);
 
         return view;
@@ -129,8 +129,10 @@ public class StockFragment extends ListFragment implements StockDialogFragment.O
 
     @Override
     public void onAddStockFragmentInteraction() {
-        // Refresh Stock adapter after update
-        adapter.notifyDataSetChanged();
+        // Repopulate Stock adapter after update
+        Stock stock = Stock.getInstance();
+        adapter = new ListAdapter(stock.getIngredients());
+        setListAdapter(adapter);
     }
 
 }
