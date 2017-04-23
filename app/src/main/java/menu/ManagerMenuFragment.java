@@ -12,7 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import edu.oswego.csc380_2.Order;
 import edu.oswego.csc380_2.R;
-import edu.oswego.csc380_2.RestaurantData;
+import activities.RestaurantData;
 
 import java.util.ArrayList;
 
