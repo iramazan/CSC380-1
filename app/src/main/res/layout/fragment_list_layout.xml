@@ -5,13 +5,13 @@
               android:orientation="vertical">
 
     <TextView
-        android:id="@+id/stockItem"
+        android:id="@+id/listMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"/>
 
     <TextView
-        android:id="@+id/stockAmount"
+        android:id="@+id/listSub"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="15sp"/>
