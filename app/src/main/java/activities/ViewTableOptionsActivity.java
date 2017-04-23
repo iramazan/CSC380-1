@@ -43,7 +43,9 @@ public class ViewTableOptionsActivity extends AppCompatActivity implements View.
         Table.TableStatus t = RestaurantData.Instance().tables.get(index).getTableStatus();
         switch(v.getId()){
             case R.id.seatTable:
+                //if the table is unuoccupied
                 if(t != Table.TableStatus.OCCUPIED && t != Table.TableStatus.DIRTY) {
+                    //set content to the miniactivity and create the button in it
                     setContentView(R.layout.miniactivity_seat_table);
                     Button seatCustomers = (Button) findViewById(R.id.seatCustomer);
                     seatCustomers.setOnClickListener(this);
@@ -56,6 +58,7 @@ public class ViewTableOptionsActivity extends AppCompatActivity implements View.
                 }
                 break;
             case R.id.placeTableOrder:
+                //create the new intent and place the info in it
                 intent = new Intent(this, MenuActivity.class);
                 intent.putExtra("access","employee");
                 intent.putExtra("index",""+index);
@@ -63,6 +66,7 @@ public class ViewTableOptionsActivity extends AppCompatActivity implements View.
                 startActivity(intent);
                 break;
             case R.id.getCheck:
+                //retrieve the check if the table is occupied
                 if(t != Table.TableStatus.OCCUPIED){
                     tableStatus.setText("This table does not have a check");
                 }
@@ -73,6 +77,7 @@ public class ViewTableOptionsActivity extends AppCompatActivity implements View.
                 }
                 break;
             case R.id.viewTableOrders:
+                //retrieve a listview of the orders in a table if the orders array is not empty
                 if(!RestaurantData.Instance().tables.get(index).getOrders().isEmpty()){
                     intent = new Intent(this, ViewTableOrders.class);
                     intent.putExtra("index", ""+index);
@@ -83,6 +88,7 @@ public class ViewTableOptionsActivity extends AppCompatActivity implements View.
                 }
                 break;
             case R.id.evict:
+                //evict a table and set its ENUM to something depending on the current state of it
                 if(t == Table.TableStatus.OCCUPIED){
                     tableStatus.setText("This table is now DIRTY");
                     //for each order at this table
@@ -95,12 +101,16 @@ public class ViewTableOptionsActivity extends AppCompatActivity implements View.
                 }
                 break;
             case R.id.seatCustomer:
+                //retrieve the inputted amount
                 String nCust = numCustomers.getText().toString();
+                //parse to int
                 int seatAmount = Integer.parseInt(nCust);
+                //if the inputted amount is valid for the given table, seat the table
                 if(seatAmount <= RestaurantData.Instance().tables.get(index).getSeatingCapacity() && seatAmount > 0){
                     RestaurantData.Instance().tables.get(index).seatTable(seatAmount);
                     this.recreate();
                 }
+                //else output an error message
                 else{
                     int cap = RestaurantData.Instance().tables.get(index).getSeatingCapacity();
                     custOutput.setText("Please enter a number greater than 0, and equal to or less then " + cap);

@@ -19,12 +19,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //create users in RestaurantData singleton
         RestaurantData.Instance().createUsers(getResources().openRawResource(R.raw.users));
+        //Create inputStreams from the raw files
         InputStream a = getResources().openRawResource(R.raw.appetizers);
         InputStream e = getResources().openRawResource(R.raw.entrees);
         InputStream d = getResources().openRawResource(R.raw.desserts);
         InputStream s = getResources().openRawResource(R.raw.stock);
+
+        //create stock, menus, and tables
         RestaurantData.Instance().createStock(s);
         RestaurantData.Instance().createMenu(a, e, d);
         RestaurantData.Instance().createTables(getResources().openRawResource(R.raw.tables));
