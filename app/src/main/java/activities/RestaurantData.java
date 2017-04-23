@@ -3,7 +3,9 @@ package activities;
 import java.io.InputStream;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
+import java.util.function.Predicate;
 
 import edu.oswego.csc380_2.Order;
 import edu.oswego.csc380_2.Stock;
@@ -100,7 +102,54 @@ public class RestaurantData{
         users.add(u);
     }
 
+    // Modify order given type, name, and new price
+    public void modifyOrder(int type, String orderName, double price) {
+        ArrayList<Order> modOrders;
+        switch(type) {
+            case 0: // Appetizers
+                modOrders = appetizersMenu;
+                break;
+            case 1: // Entrees
+                modOrders = entreesMenu;
+                break;
+            case 2: // Desserts
+                modOrders = dessertsMenu;
+                break;
+            default:
+                return;
+        }
+        for(Order o : modOrders) {
+            if(o.getName().equals(orderName))
+                o.setPrice(price);
+        }
+    }
 
+    // Remove order given type and name
+    public void removeOrder(int type, String orderName) {
+        ArrayList<Order> modOrders;
+        switch(type) {
+            case 0: // Appetizers
+                modOrders = appetizersMenu;
+                break;
+            case 1: // Entrees
+                modOrders = entreesMenu;
+                break;
+            case 2: // Desserts
+                modOrders = dessertsMenu;
+                break;
+            default:
+                return;
+        }
+        Order toBeRemoved = null;
+        // Find removal canidate
+        for(Order o : modOrders) {
+            if(o.getName().equals(orderName))
+                toBeRemoved = o;
+        }
+        // Remove if candidate was found
+        if(toBeRemoved != null)
+            modOrders.remove(toBeRemoved);
+    }
 
     public void createUsers(InputStream i) {
         Scanner scan = new Scanner(i);

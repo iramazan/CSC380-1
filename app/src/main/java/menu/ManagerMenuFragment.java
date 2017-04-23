@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import edu.oswego.csc380_2.Order;
 import edu.oswego.csc380_2.R;
@@ -24,7 +25,8 @@ import java.util.ArrayList;
  * Use the {@link ManagerMenuFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ManagerMenuFragment extends ListFragment {
+public class ManagerMenuFragment extends ListFragment
+        implements ManagerModifyPriceFragment.OnFragmentInteractionListener {
 
     private class ListAdapter extends BaseAdapter {
 
@@ -141,6 +143,22 @@ public class ManagerMenuFragment extends ListFragment {
 
         return view;
     }
+
+    @Override
+    public void onListItemClick(ListView lv, View view, int position, long id) {
+        super.onListItemClick(lv, view, position, id);
+        // Create Dialog box to modify dish price
+        String dish = adapter.getItem(position).getName();
+        ManagerModifyPriceFragment dialog =
+                ManagerModifyPriceFragment.newInstance(menuItemCategory, dish);
+        dialog.show(getChildFragmentManager(), "modDishPrice");
+    }
+
+    @Override
+    public void onModPriceFragmentInteraction() {
+        adapter.notifyDataSetChanged();
+    }
+
 
     /**
      * This interface must be implemented by activities that contain this
