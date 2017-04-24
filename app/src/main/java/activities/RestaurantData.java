@@ -105,19 +105,35 @@ public class RestaurantData{
 
     // Add order given type, name, and price
     public void addOrder(int type, String orderName, double price) {
+        ArrayList<Order> modOrders;
+        String typeString;
         switch(type) {
             case 0: // Appetizers
-                appetizersMenu.add(new Order(orderName, "appetizer", price));
+                modOrders = appetizersMenu;
+                typeString = "appetizer";
                 break;
             case 1: // Entrees
-                entreesMenu.add(new Order(orderName, "entree", price));
+                modOrders = entreesMenu;
+                typeString = "entree";
                 break;
             case 2: // Desserts
-                dessertsMenu.add(new Order(orderName, "dessert", price));
+                modOrders = dessertsMenu;
+                typeString = "dessert";
                 break;
             default:
                 return;
         }
+        // if dish already exists, modify instead
+        boolean exists = false;
+        for(Order o : modOrders) {
+            if(o.getName().equals(orderName)) {
+                exists = true;
+            }
+        }
+        if(!exists)
+            modOrders.add(new Order(orderName, typeString, price));
+        else
+            modifyOrder(type, orderName, price);
     }
 
     // Modify order given type, name, and new price
