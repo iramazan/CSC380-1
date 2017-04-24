@@ -25,4 +25,6 @@
     <string name="item">Item</string>
     <string name="amount">amount</string>
     <string name="new_price">New Price</string>
+    <string name="dish">Dish</string>
+    <string name="price">Price</string>
 </resources>

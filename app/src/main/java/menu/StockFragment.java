@@ -11,7 +11,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import edu.oswego.csc380_2.R;
 import edu.oswego.csc380_2.Stock;
-import edu.oswego.csc380_2.StockDialogFragment;
 
 import java.util.ArrayList;
 import java.util.Map;

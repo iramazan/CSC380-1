@@ -103,6 +103,23 @@ public class RestaurantData{
         users.add(u);
     }
 
+    // Add order given type, name, and price
+    public void addOrder(int type, String orderName, double price) {
+        switch(type) {
+            case 0: // Appetizers
+                appetizersMenu.add(new Order(orderName, "appetizer", price));
+                break;
+            case 1: // Entrees
+                entreesMenu.add(new Order(orderName, "entree", price));
+                break;
+            case 2: // Desserts
+                dessertsMenu.add(new Order(orderName, "dessert", price));
+                break;
+            default:
+                return;
+        }
+    }
+
     // Modify order given type, name, and new price
     public void modifyOrder(int type, String orderName, double price) {
         ArrayList<Order> modOrders;
