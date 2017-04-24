@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
-import java.util.function.Predicate;
 
 import edu.oswego.csc380_2.Order;
 import edu.oswego.csc380_2.Stock;
@@ -102,6 +101,23 @@ public class RestaurantData{
     public void addUser(String username, String password, String access){
         User u = new User(username, password, access);
         users.add(u);
+    }
+
+    // Add order given type, name, and price
+    public void addOrder(int type, String orderName, double price) {
+        switch(type) {
+            case 0: // Appetizers
+                appetizersMenu.add(new Order(orderName, "appetizer", price));
+                break;
+            case 1: // Entrees
+                entreesMenu.add(new Order(orderName, "entree", price));
+                break;
+            case 2: // Desserts
+                dessertsMenu.add(new Order(orderName, "dessert", price));
+                break;
+            default:
+                return;
+        }
     }
 
     // Modify order given type, name, and new price

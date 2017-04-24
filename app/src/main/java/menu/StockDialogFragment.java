@@ -1,4 +1,4 @@
-package edu.oswego.csc380_2;
+package menu;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -10,7 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import menu.StockFragment;
+import edu.oswego.csc380_2.R;
+import edu.oswego.csc380_2.Stock;
 
 
 /**

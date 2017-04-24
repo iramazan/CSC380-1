@@ -14,19 +14,18 @@ import android.widget.TextView;
 import edu.oswego.csc380_2.Order;
 import edu.oswego.csc380_2.R;
 import activities.RestaurantData;
+import layout.AddMenuDialogFragment;
 
 import java.util.ArrayList;
 
 /**
  * A simple {@link ListFragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ManagerMenuFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
  * Use the {@link ManagerMenuFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class ManagerMenuFragment extends ListFragment
-        implements ManagerModifyPriceFragment.OnFragmentInteractionListener {
+        implements ManagerModifyPriceFragment.OnFragmentInteractionListener,
+        AddMenuDialogFragment.OnFragmentInteractionListener {
 
     private class ListAdapter extends BaseAdapter {
 
@@ -74,8 +73,6 @@ public class ManagerMenuFragment extends ListFragment
 
     private ListAdapter adapter;
 
-    private OnFragmentInteractionListener mListener;
-
     public ManagerMenuFragment() {
         // Required empty public constructor
     }
@@ -87,7 +84,6 @@ public class ManagerMenuFragment extends ListFragment
      * @param param1 Parameter 1.
      * @return A new instance of fragment ManagerMenuFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static ManagerMenuFragment newInstance(int param1) {
         ManagerMenuFragment fragment = new ManagerMenuFragment();
         Bundle args = new Bundle();
@@ -109,22 +105,26 @@ public class ManagerMenuFragment extends ListFragment
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_manager_menu, container, false);
 
-        // TODO Handle Floating Action Button click
-        /*
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.stockFab);
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.editMenuFab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Add to the Stock
-                AddStockDialogFragment dialog = AddStockDialogFragment.newInstance();
-                dialog.show(getChildFragmentManager(), "addStockDialog");
+                AddMenuDialogFragment dialog = AddMenuDialogFragment.newInstance(menuItemCategory);
+                dialog.show(getChildFragmentManager(), "addDishDialog");
             }
         });
-        */
 
+        // Populate List
+        this.populateList();
+
+        return view;
+    }
+
+    public void populateList() {
         // Populate list
         RestaurantData res = RestaurantData.Instance();
-        ArrayList<Order> orderList = null;
+        ArrayList<Order> orderList;
         switch(menuItemCategory) {
             case 0: // Appetizer
                 orderList = res.getAppetizersMenu();
@@ -140,8 +140,6 @@ public class ManagerMenuFragment extends ListFragment
         }
         adapter = new ListAdapter(orderList);
         setListAdapter(adapter);
-
-        return view;
     }
 
     @Override
@@ -159,19 +157,9 @@ public class ManagerMenuFragment extends ListFragment
         adapter.notifyDataSetChanged();
     }
 
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    @Override
+    public void onAddMenuFragmentInteraction(Uri uri) {
+        populateList();
     }
+
 }

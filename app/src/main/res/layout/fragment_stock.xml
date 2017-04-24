@@ -20,7 +20,6 @@
     <android.support.design.widget.FloatingActionButton
         app:fabSize="normal"
         app:layout_anchorGravity="bottom|end"
-        app:layout_anchor="@android:id/list"
         android:id="@+id/stockFab"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
