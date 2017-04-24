@@ -1,5 +1,7 @@
 package edu.oswego.csc380_2;
 
+import activities.RestaurantData;
+
 /**
  * Created by George Dzagali on 2/22/2017.
  */
@@ -49,4 +51,5 @@ public abstract class Employee {
             this.pin = pin;
         else throw new IllegalArgumentException("A pin must be 4 digits.");
     }
+
 }

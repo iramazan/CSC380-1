@@ -13,9 +13,8 @@
         android:text="Seat Table"
         tools:layout_editor_absoluteY="35dp"
         tools:layout_editor_absoluteX="80dp"
-        android:layout_marginTop="70dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignTop="@+id/tableStatus"
+        android:layout_alignStart="@+id/viewTableOrders" />
     <Button
         android:id="@+id/placeTableOrder"
         android:layout_width="250dp"
@@ -23,7 +22,7 @@
         android:text="Place Order"
         tools:layout_editor_absoluteX="80dp"
         tools:layout_editor_absoluteY="175dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="18dp"
         android:layout_below="@+id/seatTable"
         android:layout_alignStart="@+id/seatTable" />
     <Button
