@@ -16,6 +16,7 @@
               android:icon="@drawable/ic_restaurant_menu_black_24dp"
               android:title="@string/edit_menu"
               app:showAsAction="ifRoom" />
+      <!--
       <item
               android:id="@+id/managerEmployeeSchedules"
               android:enabled="true"
@@ -28,4 +29,5 @@
               android:icon="@drawable/ic_account_balance_black_24dp"
               android:title="@string/finances"
               app:showAsAction="ifRoom" />
+      -->
 </menu>

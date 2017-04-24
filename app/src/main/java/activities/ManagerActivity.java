@@ -31,12 +31,14 @@ public class ManagerActivity extends AppCompatActivity {
                     case R.id.managerMenuEdit:
                         fragment = ManagerMenuEditFragment.newInstance();
                         break;
+                    /*
                     case R.id.managerEmployeeSchedules:
                         fragment = ManagerEmployeeScheduleFragment.newInstance();
                         break;
                     case R.id.managerFinance:
                         fragment = FinanceFragment.newInstance();
                         break;
+                    */
                     case R.id.managerStock:
                         fragment = StockFragment.newInstance();
                 }
