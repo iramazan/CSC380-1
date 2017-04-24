@@ -3,7 +3,7 @@ package activities;
 import java.io.InputStream;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Random;
 import java.util.Scanner;
 
 import edu.oswego.csc380_2.Order;
@@ -170,12 +170,18 @@ public class RestaurantData{
     }
 
     public void createUsers(InputStream i) {
+        Random rand = new Random();
         Scanner scan = new Scanner(i);
         while(scan.hasNextLine()) {
             String name = scan.nextLine();
             String pass = scan.nextLine();
             String access = scan.nextLine();
             User u = new User(name, pass, access);
+            for(int k = 0; k < 7; k++){
+                int f = rand.nextInt(2)+11;
+                int s = rand.nextInt(10)+1;
+                u.setSchedule(k, String.valueOf(f), String.valueOf(s));
+            }
             users.add(u);
         }
     }
@@ -232,5 +238,26 @@ public class RestaurantData{
                 orders.remove(o);
             }
         }
+    }
+
+    public String dateHelper(int i){
+
+        switch(i){
+            case 0:
+                return "Monday \n";
+            case 1:
+                return "Tuesday \n";
+            case 2:
+                return "Wednesday \n";
+            case 3:
+                return "Thursday \n";
+            case 4:
+                return "Friday \n";
+            case 5:
+                return "Saturday \n";
+            case 6:
+                return "Sunday \n";
+        }
+        return null;
     }
 }
