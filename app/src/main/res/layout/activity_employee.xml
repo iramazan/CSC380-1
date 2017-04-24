@@ -13,28 +13,28 @@
         android:text="Orders"
         tools:layout_editor_absoluteY="35dp"
         tools:layout_editor_absoluteX="80dp"
-        android:layout_marginTop="65dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/schedule"
-        android:layout_marginStart="6dp" />
+        android:layout_above="@+id/schedule"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="61dp"/>
     <Button
         android:id="@+id/schedule"
         android:layout_width="250dp"
         android:layout_height="100dp"
-        android:layout_marginTop="65dp"
         android:text="Schedule"
         tools:layout_editor_absoluteX="80dp"
         tools:layout_editor_absoluteY="175dp"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/serverTables" />
+        android:layout_marginBottom="56dp"
+        android:layout_above="@+id/serverTables"
+        android:layout_alignRight="@+id/serverTables"
+        android:layout_alignEnd="@+id/serverTables" />
     <Button
         android:id="@+id/serverTables"
         android:layout_width="250dp"
         android:layout_height="100dp"
         android:text="Tables"
-        android:layout_marginTop="35dp"
         tools:layout_editor_absoluteY="461dp"
         tools:layout_editor_absoluteX="80dp"
-        android:layout_below="@+id/schedule"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="88dp" />
 </RelativeLayout>
