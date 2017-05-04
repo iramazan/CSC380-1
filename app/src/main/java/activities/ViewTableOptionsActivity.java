@@ -58,17 +58,22 @@ public class ViewTableOptionsActivity extends AppCompatActivity implements View.
                 }
                 break;
             case R.id.placeTableOrder:
-                //create the new intent and place the info in it
-                intent = new Intent(this, MenuActivity.class);
-                intent.putExtra("access","employee");
-                intent.putExtra("index",""+index);
-                System.out.println(index);
-                startActivity(intent);
+                if(t != Table.TableStatus.OCCUPIED){
+                    tableStatus.setText("This table must be seated to place orders for it.");
+                }
+                else{
+                    //create the new intent and place the info in it
+                    intent = new Intent(this, MenuActivity.class);
+                    intent.putExtra("access","employee");
+                    intent.putExtra("index",""+index);
+                    System.out.println(index);
+                    startActivity(intent);
+                }
                 break;
             case R.id.getCheck:
                 //retrieve the check if the table is occupied
                 if(t != Table.TableStatus.OCCUPIED){
-                    tableStatus.setText("This table does not have a check");
+                    tableStatus.setText("This table does not have a check.");
                 }
                 else{
                     intent = new Intent(this, CheckActivity.class);

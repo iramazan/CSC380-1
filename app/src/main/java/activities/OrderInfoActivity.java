@@ -70,7 +70,7 @@ public class OrderInfoActivity extends ListActivity {
             intent.putExtra("access", access);
             if(access.equals("employee")){
                 String index = getIntent().getStringExtra("index");
-                intent.putExtra("index", index);
+                intent.putExtra("index", ""+index);
             }
 
         }

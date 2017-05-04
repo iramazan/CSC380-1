@@ -37,7 +37,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 if(access.equals("employee")){
                     String index = getIntent().getStringExtra("index");
                     System.out.println(index);
-                    intent.putExtra("index", index);
+                     intent.putExtra("index", ""+index);
                 }
                 startActivity(intent);
                 break;
@@ -47,7 +47,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra("access",access);
                 if(access.equals("employee")){
                     String index = getIntent().getStringExtra("index");
-                    intent.putExtra("index", index);
+                    intent.putExtra("index", ""+index);
                 }
                 startActivity(intent);
                 break;
@@ -57,7 +57,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra("access",access);
                 if(access.equals("employee")){
                     String index = getIntent().getStringExtra("index");
-                    intent.putExtra("index", index);
+                    intent.putExtra("index", ""+index);
                 }
                 startActivity(intent);
                 break;
