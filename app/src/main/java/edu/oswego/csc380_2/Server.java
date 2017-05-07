@@ -40,10 +40,6 @@ public class Server extends Employee {
         throw new UnsupportedOperationException("Table with ID " + tableID + " is not allocated to this server.");
     }
 
-    // TODO: How should paychecks be handled?
-    public void printPaycheck() {
-    }
-
     public String getTableData(int id) {
         Table table = null;
         // Get the correct table

@@ -8,11 +8,6 @@ public class Owner extends Employee implements Observer {
     protected String serFile;
     private HashMap<String, Finance> finance;
 
-    @Override
-    public void printPaycheck() {
-        //TODO
-    }
-
     public Owner(String lastName, String firstName, float salary, int pin) {
         super(lastName, firstName, salary, pin);
         finance = new HashMap<>();
