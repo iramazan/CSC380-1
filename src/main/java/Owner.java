@@ -5,11 +5,6 @@ import java.util.Optional;
 
 public class Owner extends Employee implements Observer {
 
-    @Override
-    public void printPaycheck() {
-        //TODO
-    }
-
     public Owner(String lastName, String firstName, float salary, int pin) {
         super(firstName, firstName, salary, pin);
     }

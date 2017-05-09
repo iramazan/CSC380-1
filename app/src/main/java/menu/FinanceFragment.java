@@ -30,7 +30,6 @@ public class FinanceFragment extends Fragment {
      *
      * @return A new instance of fragment FinanceFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static FinanceFragment newInstance() {
         FinanceFragment fragment = new FinanceFragment();
         return fragment;
@@ -59,7 +58,6 @@ public class FinanceFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 }

@@ -45,7 +45,6 @@ public class ManagerModifyPriceFragment extends DialogFragment {
      *
      * @return A new instance of fragment ManagerModifyPriceFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static ManagerModifyPriceFragment newInstance(int param1, String param2) {
         ManagerModifyPriceFragment fragment = new ManagerModifyPriceFragment();
         Bundle args = new Bundle();

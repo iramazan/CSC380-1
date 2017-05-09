@@ -47,7 +47,6 @@ public class ManagerMenuEditFragment extends Fragment {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            // TODO
             switch(position) {
                 case 0: // Appetizers
                     return "Appetizers";

@@ -70,7 +70,6 @@ public class TableTest {
 
     /*
     // Generate a bill split by dishes
-    // TODO: This test won't pass
     @Test
     public void testGenerateBillSplitByDish() throws Exception {
         testTable.seatTable(3);

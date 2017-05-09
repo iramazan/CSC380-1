@@ -41,7 +41,6 @@ public class AddMenuDialogFragment extends DialogFragment {
      * @param param1 Parameter 1.
      * @return A new instance of fragment AddMenuDialogFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static AddMenuDialogFragment newInstance(int param1) {
         AddMenuDialogFragment fragment = new AddMenuDialogFragment();
         Bundle args = new Bundle();
@@ -105,7 +104,6 @@ public class AddMenuDialogFragment extends DialogFragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onAddMenuFragmentInteraction(Uri uri);
     }
 }

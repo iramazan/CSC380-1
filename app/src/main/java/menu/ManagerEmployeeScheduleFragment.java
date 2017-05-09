@@ -30,7 +30,6 @@ public class ManagerEmployeeScheduleFragment extends Fragment {
      *
      * @return A new instance of fragment ManagerEmployeeScheduleFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static Fragment newInstance() {
         ManagerEmployeeScheduleFragment fragment = new ManagerEmployeeScheduleFragment();
         return fragment;
@@ -59,7 +58,6 @@ public class ManagerEmployeeScheduleFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 }

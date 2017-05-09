@@ -19,8 +19,6 @@ public abstract class Employee {
         this.salary = salary;
         this.setPin(pin);
     }
-    // abstract method
-    public abstract void printPaycheck();
 
     // Allow employee to login to system if provided correct pin
     // Pin must be 4 digits

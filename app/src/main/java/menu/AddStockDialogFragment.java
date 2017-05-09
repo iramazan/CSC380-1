@@ -35,7 +35,6 @@ public class AddStockDialogFragment extends DialogFragment {
      *
      * @return A new instance of fragment AddStockDialogFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static AddStockDialogFragment newInstance() {
         AddStockDialogFragment fragment = new AddStockDialogFragment();
         return fragment;
