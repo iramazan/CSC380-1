@@ -59,7 +59,7 @@ public class ViewTableOptionsActivity extends AppCompatActivity implements View.
                 break;
             case R.id.placeTableOrder:
                 if(t != Table.TableStatus.OCCUPIED){
-                    tableStatus.setText("This table must be seated to place orders for it.");
+                    tableStatus.setText("This table must be seated and clean to place orders for it.");
                 }
                 else{
                     //create the new intent and place the info in it
@@ -95,10 +95,13 @@ public class ViewTableOptionsActivity extends AppCompatActivity implements View.
             case R.id.evict:
                 //evict a table and set its ENUM to something depending on the current state of it
                 if(t == Table.TableStatus.OCCUPIED){
-                    tableStatus.setText("This table is now DIRTY");
-                    //for each order at this table
-                    RestaurantData.Instance().removeTableOrders(RestaurantData.Instance().tables.get(index).getOrders());
-                    RestaurantData.Instance().tables.get(index).freeTable();
+                    if(RestaurantData.Instance().tables.get(index).getOrders().isEmpty()){
+                        tableStatus.setText("This table is now DIRTY");
+                        RestaurantData.Instance().tables.get(index).freeTable();
+                    }
+                    else {
+                        tableStatus.setText("This table has not paid yet");
+                    }
                 }
                 else if(t == Table.TableStatus.DIRTY){
                     tableStatus.setText("This table is now CLEAN and FREE");
