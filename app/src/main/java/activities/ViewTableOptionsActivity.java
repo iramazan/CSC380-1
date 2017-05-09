@@ -83,7 +83,7 @@ public class ViewTableOptionsActivity extends AppCompatActivity implements View.
                 break;
             case R.id.viewTableOrders:
                 //retrieve a listview of the orders in a table if the orders array is not empty
-                if(!RestaurantData.Instance().tables.get(index).getOrders().isEmpty()){
+                if(RestaurantData.Instance().tables.get(index).getOrders()!=null){
                     intent = new Intent(this, ViewTableOrders.class);
                     intent.putExtra("index", ""+index);
                     startActivity(intent);

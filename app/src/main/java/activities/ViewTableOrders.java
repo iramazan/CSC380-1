@@ -19,9 +19,11 @@ public class ViewTableOrders extends ListActivity {
         setContentView(R.layout.activity_view_table_orders);
         index = Integer.parseInt(getIntent().getStringExtra("index"));
         ListView listView = (ListView) findViewById(android.R.id.list);
-        ArrayAdapter<Table> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, RestaurantData.Instance().tables.get(index).getOrders());
-        if (!adapter.isEmpty()) {
-            listView.setAdapter(adapter);
+        if(RestaurantData.Instance().tables.get(index).getOrders()!=null) {
+            ArrayAdapter<Table> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, RestaurantData.Instance().tables.get(index).getOrders());
+            if (!adapter.isEmpty()) {
+                listView.setAdapter(adapter);
+            }
         }
     }
 

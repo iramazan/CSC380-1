@@ -78,6 +78,8 @@ public class LoginActivity extends Activity implements OnClickListener {
                 Intent managerLogin = new Intent(this, ManagerActivity.class);
                 startActivity(managerLogin);
             }
+            pass.setText("");
+            user.setText("");
         }
     }
     //read through users.txt raw file to create user objects
